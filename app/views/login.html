@@ -1,0 +1,31 @@
+<div class="container-fluid">
+{{message}}
+
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+    </br></br>
+
+    <form ng-submit="submit()">   
+
+    <div class="panel-group" id="myaccordian">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h3 class="panel-title" data-target="#panel-1"
+                    data-toggle="collapse"
+                    data-parent="#myaccordian">LOGIN</h3>
+            </div>
+            <div class="text-center" id="panel-1">
+                <div class="panel-body">
+                    Usuario<br /><input type="text" ng-model="jUser" name="jUser"><br>
+                    Contraseña<br /><input type="password" ng-model="jPass" name="jPass"><br><br>
+                    <input type="submit" class="btn btn-success" id="submit" value="Aceptar"><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    </div>
+    <div id="resp" ng-model="resp" class="col-sm-1"></div>
+
+</div>
