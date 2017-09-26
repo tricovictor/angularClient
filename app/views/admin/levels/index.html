@@ -1,0 +1,18 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO DE NIVELES</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="level in levels">
+            <div>
+                {{level.id}}
+                {{level.name}}
+                Puntaje: {{level.value}}
+                {{level.degree_id}}
+                {{level.selected}}</br>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

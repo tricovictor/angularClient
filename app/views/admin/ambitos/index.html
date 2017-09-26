@@ -1,0 +1,15 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO DE AMBITOS</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="ambito in ambitos">
+            <div>
+                {{ambito.id}}
+                {{ambito.name}}</br>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

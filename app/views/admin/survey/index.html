@@ -1,0 +1,19 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO DE ENCUESTAS</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="survey in surveys">
+            <div>
+                {{survey.id}}
+                Comienzo: {{survey.initialdate}}
+                Finalizada: {{survey.finaldate}}
+                Estado: {{survey.state}}
+                Municipio: {{survey.municipality_id}}
+                </br>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

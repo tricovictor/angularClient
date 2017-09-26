@@ -1,0 +1,18 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO DE MUNICIPIOS</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="municipality in municipalities">
+            <div>
+                {{municipality.id}}
+                {{municipality.name}}
+                {{municipality.idioms}}
+                {{municipality.intendent}}
+                </br>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

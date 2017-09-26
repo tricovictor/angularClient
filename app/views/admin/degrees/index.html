@@ -1,0 +1,16 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO DE GRADOS</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="degree in degrees">
+            <div>
+                {{degree.id}}
+                {{degree.name}}
+                SubAmbito: {{degree.subambito_id}}</br>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

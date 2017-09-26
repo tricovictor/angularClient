@@ -1,0 +1,17 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO USUARIOS</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="user in users">
+            <div>
+                {{user.name}}</br>
+                {{user.lastname}}
+                {{user.email}}
+                {{user.phone}}
+            </div>
+        </li>
+    </ul>
+</div>
+
+

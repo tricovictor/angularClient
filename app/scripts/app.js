@@ -27,7 +27,6 @@ var app = angular
     }
   })
 
-
   .config(["$routeProvider", "CONFIG", "ROLES", function ($routeProvider, CONFIG, ROLES) {
     $routeProvider
       .when('/',{
@@ -41,12 +40,92 @@ var app = angular
         }
       })
       .when('/user', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'user.html',
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'users/user.html',
         controller: 'UserCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }
       })
+      .when('/user/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'users/index.html',
+        controller: 'UserCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/user/create', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'users/create.html',
+        controller: 'UserCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/ambito/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'ambitos/index.html',
+        controller: 'AmbitoCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/subambito/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'subAmbito/index.html',
+        controller: 'SubAmbitoCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/degree/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'degrees/index.html',
+        controller: 'DegreeCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/level/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'levels/index.html',
+        controller: 'LevelCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/score/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'score/index.html',
+        controller: 'ScoreCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/survey/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'survey/index.html',
+        controller: 'SurveyCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/municipality/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'municipality/index.html',
+        controller: 'MunicipalityCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/department/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'departments/index.html',
+        controller: 'DepartmentCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/adminHome', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'home.html',
         data: {
@@ -68,6 +147,14 @@ var app = angular
           authorized: [ROLES.INTERVIEWER.ROL]
         }
       });
+
+  }])
+
+  .config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+  //$httpProvider.defaults.headers.post = {};
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
 
   }])
 
