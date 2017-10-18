@@ -1,10 +1,11 @@
 
 app.controller('UserCtrl', ['$scope', 'userFactory', function ($scope, userFactory) {
     $scope.message = null;
+
 	userFactory.getUsers().then(function(users)
 	{
-		$scope.users = users.response;
-        console.log(users.response);
+		$scope.users = users.data;
+        console.log(users.data);
 	}).catch(function(error){
 		console.log(error);
 	});
@@ -21,22 +22,24 @@ app.controller('UserCtrl', ['$scope', 'userFactory', function ($scope, userFacto
             state: true
         };
         parameter = JSON.stringify(parameter);
-        console.log(parameter);
-        userFactory.addUser(parameter).then(function(user){
-            //$scope.message = user.data.response;
-            console.log(user.data);
-           // window.location.replace("#!/");
-        }).catch(function(error){
-            console.log(error);
-            //$scope.message = error.data.response;
+
+       var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "http://localhost:8080/rest/users/add",
+          "method": "POST",
+          "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache",
+          },
+          "processData": false,
+          "data": parameter
+        };
+        $.ajax(settings).done(function (response) {
+          $scope.message = response;
+          console.log(response);
         });
     };
-
-    /*userFactory.getUser(1).then(function(user)
-    {
-        $scope.user = user.data;
-    });*/
-
 }]);
 
 app.factory('userFactory', ['$http', function($http) 
@@ -55,11 +58,6 @@ app.factory('userFactory', ['$http', function($http)
         return $http.get(urlService + id);
     };
     
-    obj.addUser = function(user)
-    {
-        return $http.post(urlService + 'add', user);
-    };
-
     return obj;
 
 }]); 
