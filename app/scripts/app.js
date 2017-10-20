@@ -148,6 +148,72 @@ var app = angular
         }
       });
 
+      .when('/smartEconomy/aplicacionesMovilesComercio', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'aplicacionesMovilesComercioSurvey.html',
+        controller: 'aplicacionesMovilesComercioSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/otrosServiciosComercio', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'otrosServiciosComercioSurvey.html',
+        controller: 'otrosServiciosComercioSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/aplicacionesMovilesTurista', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'aplicacionesMovilesTuristaSurvey.html',
+        controller: 'aplicacionesMovilesTuristaSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/otrosServiciosTurista', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'otrosServiciosTuristaSurvey.html',
+        controller: 'otrosServiciosTuristaSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/serviciosElectronicosEmpleoEmprendimiento', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosElectronicosEmpleoEmprendimientoSurvey.html',
+        controller: 'serviciosElectronicosEmpleoEmprendimientoSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/serviciosElectronicosInformacionConsumidor', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosElectronicosInformacionConsumidorSurvey.html',
+        controller: 'serviciosElectronicosInformacionConsumidorSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/serviciosIncorporacionTIC', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosIncorporacionTICSurvey.html',
+        controller: 'serviciosIncorporacionTICSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      .when('/smartEconomy/serviciosRecursosInfraestructurasInnovacion', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosRecursosInfraestructurasInnovacionSurvey.html',
+        controller: 'serviciosRecursosInfraestructurasInnovacionSurveyCtrl',
+        data: {
+          authorized: [ROLES.INTERVIEWER.ROL]
+        }
+      });
+
+      
+
   }])
 
   .config(['$httpProvider', function($httpProvider) {

@@ -9,6 +9,7 @@ app.controller('UserCtrl', ['$scope', 'userFactory', function ($scope, userFacto
 		console.log(error);
 	});
 
+
     $scope.addUser = function()
     {
         var parameter = {
