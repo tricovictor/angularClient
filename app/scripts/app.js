@@ -62,6 +62,14 @@ var app = angular
         }
       })
 
+      .when('/user/edit', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'users/edit.html',
+        controller: 'UserCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/ambito/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'ambitos/index.html',
         controller: 'AmbitoCtrl',
@@ -217,9 +225,9 @@ var app = angular
   }])
 
   .config(['$httpProvider', function($httpProvider) {
-        $httpProvider.defaults.useXDomain = true;
+      $httpProvider.defaults.useXDomain = true;
   //$httpProvider.defaults.headers.post = {};
-        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
 
   }])

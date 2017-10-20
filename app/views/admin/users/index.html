@@ -5,10 +5,14 @@
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="user in users">
             <div>
-                {{user.name}}</br>
-                {{user.lastname}}
-                {{user.email}}
+                <label>{{user.name}}
+                {{user.lastname}}</label></br>
+                {{user.email}}</br>
                 {{user.phone}}
+                <div style="text-align: right;">
+                    <a class="btn-lg btn-success" ng-click="editUser()" title="Editar"
+                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </div>
             </div>
         </li>
     </ul>
