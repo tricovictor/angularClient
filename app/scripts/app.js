@@ -141,6 +141,27 @@ var app = angular
         }
       })
 
+      .when('/adminCrearFichaTI', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/create.html',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/adminModificarFichaTI', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/edit.html',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/adminListarFichaTI', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/index.html',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+      
       .when('/interviewerHome', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'home.html',
         data: {
