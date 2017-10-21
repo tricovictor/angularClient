@@ -148,9 +148,9 @@ var app = angular
         }
       })
 
-      .when('/survey', {
-        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'survey.html',
-        controller: 'SurveyCtrl',
+      .when('/subSurvey', {
+        templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'subSurvey.html',
+        controller: 'subSurveyCtrl',
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
