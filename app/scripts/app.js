@@ -126,6 +126,14 @@ var app = angular
         }
       })
 
+      .when('/municipality/create', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'municipality/create.html',
+        controller: 'MunicipalityCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/department/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'departments/index.html',
         controller: 'DepartmentCtrl',
@@ -175,7 +183,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/aplicacionesMovilesComercio', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'aplicacionesMovilesComercioSurvey.html',
@@ -183,7 +191,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/otrosServiciosComercio', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'otrosServiciosComercioSurvey.html',
@@ -191,7 +199,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/aplicacionesMovilesTurista', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'aplicacionesMovilesTuristaSurvey.html',
@@ -199,7 +207,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/otrosServiciosTurista', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'otrosServiciosTuristaSurvey.html',
@@ -207,7 +215,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/serviciosElectronicosEmpleoEmprendimiento', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosElectronicosEmpleoEmprendimientoSurvey.html',
@@ -215,7 +223,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/serviciosElectronicosInformacionConsumidor', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosElectronicosInformacionConsumidorSurvey.html',
@@ -223,7 +231,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/serviciosIncorporacionTIC', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosIncorporacionTICSurvey.html',
@@ -231,7 +239,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
+      })
 
       .when('/smartEconomy/serviciosRecursosInfraestructurasInnovacion', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'serviciosRecursosInfraestructurasInnovacionSurvey.html',
@@ -239,9 +247,7 @@ var app = angular
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }
-      });
-
-      
+      })
 
   }])
 
@@ -253,6 +259,16 @@ var app = angular
 
   }])
 
+  .directive('historyBackward', ['$window', function($window) {
+      return {
+          restrict: 'A',
+          link: function(scope, elem, attrs) {
+              elem.bind('click', function() {
+                  $window.history.back();
+              });
+          }
+      };
+  }])
 
   .run(["$rootScope", "$location", "CONFIG", "ROLES", function($rootScope, $location, CONFIG, ROLES)
   {
