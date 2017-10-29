@@ -149,7 +149,7 @@ var app = angular
         }
       })
 
-      .when('/adminCrearFichaTI', {
+      .when('/createTechnicalDataSheets', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/create.html',
         data: {
           authorized: [ROLES.ADMIN.ROL]
@@ -169,7 +169,6 @@ var app = angular
           authorized: [ROLES.ADMIN.ROL]
         }
       })
-      
       
       .when('/addTypology', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'typologies/create.html',
