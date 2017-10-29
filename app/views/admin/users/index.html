@@ -9,13 +9,22 @@
                 {{user.lastname}}</label></br>
                 {{user.email}}</br>
                 {{user.phone}}
+                {{user.state}}
                 <div style="text-align: right;">
-                    <a class="btn-lg btn-success" ng-click="editUser()" title="Editar"
+                    <a class="btn-lg btn-success" ng-click="editUser(user.id)" title="Editar"
                    role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a ng-if="user.state == true" class="btn-lg btn-danger" ng-click="deleteUser(user.id)" title="Editar"
+                   role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+                    <a ng-if="user.state == false" class="btn-lg btn-success" ng-click="deleteUser(user.id)" title="Editar"
+                   role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+
                 </div>
             </div>
         </li>
     </ul>
+    <button history-backward><i class="fa fa-backward" aria-hidden="true"></i></button>
+
 </div>
 
 
