@@ -15,7 +15,7 @@
 
                <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">REPORTES<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -23,16 +23,16 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Listados</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Listado 1</a></li>
-                                <li><a href="#">Listado 2r</a></li>
+                                <li><a ng-href="#">Listado 1</a></li>
+                                <li><a ng-href="#">Listado 2r</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Gráficos</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Gráfico 1</a></li>
-                                <li><a href="#">Gráfico 2</a></li>
+                                <li><a ng-href="#">Gráfico 1</a></li>
+                                <li><a ng-href="#">Gráfico 2</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -41,14 +41,14 @@
 
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">INFORMACIÓN<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
                         <li class="dropdown">
-                            <a href="#">Fichas TI</a>
-                            <a href="#">Soluciones IT</a>
+                            <a ng-href="#">Fichas TI</a>
+                            <a ng-href="#">Soluciones IT</a>
                         </li>
                     </ul>
                 </li>
@@ -56,32 +56,32 @@
 
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">ENTORNO<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Usuarios</a>
+                            <a tabindex="-1" href="#!user/index">Usuarios</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#!user/create">Añadir</a></li>
+                                <li><a ng-href="#!user/index">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Municipios</a>
+                            <a tabindex="-1" href="#!municipality/index">Municipios</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#!municipality/create">Añadir</a></li>
+                                <li><a ng-href="#!municipality/index">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Empresas</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -90,56 +90,56 @@
 
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">CONFIGURACIÓN<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Ambitos</a>
+                            <a tabindex="-1" href="#!ambito/index">Ambitos</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Sub-Ambitos</a>
+                            <a tabindex="-1" href="#!subambito/index">Sub-Ambitos</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Grados</a>
+                            <a tabindex="-1" href="#!degree/index">Grados</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Niveles</a>
+                            <a tabindex="-1" href="#!level/index">Niveles</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Tipologias</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Departamentos</a>
+                            <a tabindex="-1" href="#!department/index">Departamentos</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Añadir</a></li>
-                                <li><a href="#">Listar</a></li>
+                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#">Listar</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -148,11 +148,11 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a ng-href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Usuario<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Mi Perfil</a></li>
-                        <li><a href="">Cerrar Sesión</a></li>
+                        <li><a ng-href="">Mi Perfil</a></li>
+                        <li><a ng-href="">Cerrar Sesión</a></li>
                     </ul>
 
                 </li>
