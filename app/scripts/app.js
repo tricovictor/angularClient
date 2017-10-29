@@ -170,6 +170,7 @@ var app = angular
         }
       })
       
+      
       .when('/addTypology', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'typologies/create.html',
         controller: 'TypologyCtrl',
