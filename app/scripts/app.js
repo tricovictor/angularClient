@@ -134,8 +134,6 @@ var app = angular
         }
       })
 
-<<<<<<< HEAD
-=======
       .when('/municipality/edit', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'municipality/edit.html',
         controller: 'MunicipalityCtrl',
@@ -144,7 +142,6 @@ var app = angular
         }
       })
 
->>>>>>> origin
       .when('/department/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'departments/index.html',
         controller: 'DepartmentCtrl',

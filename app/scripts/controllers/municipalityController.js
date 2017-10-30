@@ -1,6 +1,7 @@
 
 app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($scope, municipalityFactory) {
 
+    $scope.municipality = null;
 	municipalityFactory.getMunicipalities().then(function(municipalities)
 	{
 		$scope.municipalities = municipalities.data;
@@ -8,21 +9,16 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
 		console.log(error);
 	});
 
-<<<<<<< HEAD
-=======
     if(localStorage.getItem('municipality_id'))
     {
         municipalityFactory.getMunicipality(localStorage.getItem('municipality_id')).then(function(municipality)
         {
             $scope.municipality = municipality.data;
             localStorage.removeItem('municipality_id');
-            console.log(municipality);
         }).catch(function(error){
             console.log(error);
         });
     }
-
->>>>>>> origin
 
     $scope.addMunicipality = function()
     {
@@ -59,15 +55,39 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
         });
     };
 
-<<<<<<< HEAD
-=======
     $scope.editMunicipality = function(municipality_id)
     {
         localStorage.setItem("municipality_id", municipality_id);
         window.location.replace("#!municipality/edit");
     };
 
->>>>>>> origin
+    $scope.updateMunicipality = function()
+    {
+        var parameter = {
+            id: $scope.municipality.id,
+            name: $scope.municipality.name,
+            intendent: $scope.municipality.intendent,
+            alcalde: $scope.municipality.alcalde,
+            department_id: $scope.municipality.department_id,
+            idioms: $scope.municipality.idioms,
+            longitude: 0,
+            latitude: 0,
+            habitants: $scope.municipality.habitants,
+            superficie: $scope.municipality.superficie,
+            website: $scope.municipality.website
+        };
+        parameter = JSON.stringify(parameter);
+        console.log($scope.municipality);
+        console.log(parameter);
+        municipalityFactory.updateMunicipality(parameter).then(function(response){
+            console.log(response);
+        }).catch(function(error){
+            console.log(error);
+        });
+        window.location.replace("#!adminHome");
+    };
+
+
 }]);
 
 
@@ -85,6 +105,11 @@ app.factory('municipalityFactory', ['$http', function($http)
     obj.getMunicipality = function(id)
     {
         return $http.get(urlService + 'getMunicipalityById/?id='+ id);
+    };
+
+    obj.updateMunicipality = function(parameter)
+    {
+        return $http.put(urlService +'update', parameter);
     };
 
     return obj;
