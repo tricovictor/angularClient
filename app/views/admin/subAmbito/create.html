@@ -1,0 +1,72 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#formID").validationEngine('attach');
+    });
+</script>
+
+
+<div class="container">
+    <div class="col-sm-1"></div>
+<div ng-if="message" class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+<div class="title">CREAR SUBAMBITOS</div>
+
+ <h4 CLASS="text-center">CREAR SUBAMBITOS</h4>
+
+    <div class="col-sm-10">
+
+        <form class="form-horizontal" role="form" ng-submit="addAmbito()" id="formID">
+
+            <div class="form-group col-sm-10">
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <label>Nombre del subambito</label>
+                       <!-- <input type="text" class="form-control validate[required]" id="nombre" ng-model="name" placeholder="Ingrese el nombre">
+                       -->
+                        <input type="text" data-minlength="6" class="form-control" id="nombre" placeholder="ingrese el nombre" required>
+                        <div class="help-block"> Minimo 6 caracteres </div>
+                    </div>
+                    <div class="col-sm-10">
+
+                    	 <select type="text" class="form-control validate[required]" id="type" ng-model="type" placeholder="Seleccionar">
+                            <option value="" selected="selected" disabled>Seleccionar Ambito</option>
+                            <option value="admin">Ambito 1</option>
+                            <option value="interviewer">Ambito 2</option>
+                    </div>
+                    <div class="col-sm-10">
+
+                    	 <select type="text" class="form-control validate[required]" id="type" ng-model="type" placeholder="Seleccionar">
+                            <option value="" selected="selected" disabled>Seleccionar Grado</option>
+                            <option value="admin">Grado 1</option>
+                            <option value="interviewer">Grado 2</option>
+                    </div>
+                    <div class="col-sm-10">
+
+                    	 <select type="text" class="form-control validate[required]" id="type" ng-model="type" placeholder="Seleccionar">
+                            <option value="" selected="selected" disabled>Seleccionar Nivel</option>
+                            <option value="admin">Nivel 1</option>
+                            <option value="interviewer">Nivel 2</option>
+                    </div>
+
+                </div>
+                 <div class="form-group">
+                    <div class="col-sm-10">
+                        <button history-backward><i class="fa fa-backward" aria-hidden="true"></i></button>
+                        <input type="reset" onclick="reset()" class="btn btn-md btn-warning center-block" value="Reset">
+                        <input type="submit" class="btn btn-md btn-primary center-block" value="Crear Subambito">
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<script>
+    function reset() {
+        document.getElementById("formID").reset();
+    }
+</script>
