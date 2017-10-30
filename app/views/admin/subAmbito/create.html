@@ -25,7 +25,10 @@
                 <div class="form-group">
                     <div class="col-sm-10">
                         <label>Nombre del subambito</label>
-                        <input type="text" class="form-control validate[required]" id="nombre" ng-model="name" placeholder="Ingrese el nombre">
+                       <!-- <input type="text" class="form-control validate[required]" id="nombre" ng-model="name" placeholder="Ingrese el nombre">
+                       -->
+                        <input type="text" data-minlength="6" class="form-control" id="nombre" placeholder="ingrese el nombre" required>
+                        <div class="help-block"> Minimo 6 caracteres </div>
                     </div>
                     <div class="col-sm-10">
 
