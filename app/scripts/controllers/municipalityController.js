@@ -8,6 +8,21 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
 		console.log(error);
 	});
 
+<<<<<<< HEAD
+=======
+    if(localStorage.getItem('municipality_id'))
+    {
+        municipalityFactory.getMunicipality(localStorage.getItem('municipality_id')).then(function(municipality)
+        {
+            $scope.municipality = municipality.data;
+            localStorage.removeItem('municipality_id');
+            console.log(municipality);
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
+
+>>>>>>> origin
 
     $scope.addMunicipality = function()
     {
@@ -44,6 +59,15 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
         });
     };
 
+<<<<<<< HEAD
+=======
+    $scope.editMunicipality = function(municipality_id)
+    {
+        localStorage.setItem("municipality_id", municipality_id);
+        window.location.replace("#!municipality/edit");
+    };
+
+>>>>>>> origin
 }]);
 
 
@@ -56,6 +80,11 @@ app.factory('municipalityFactory', ['$http', function($http)
     obj.getMunicipalities = function()
     {
         return $http.get(urlService + 'all');
+    };
+
+    obj.getMunicipality = function(id)
+    {
+        return $http.get(urlService + 'getMunicipalityById/?id='+ id);
     };
 
     return obj;
