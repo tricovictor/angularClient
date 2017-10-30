@@ -1,0 +1,83 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#formID").validationEngine('attach');
+    });
+</script>
+
+
+<div class="container">
+    <div class="col-sm-1"></div>
+<div ng-if="message" class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+
+    <h4 CLASS="text-center">Modificar de Municipio</h4>
+
+    <div class="col-sm-10">
+
+        <form class="form-horizontal" role="form" ng-submit="editMunicipality()" id="formID">
+
+            <div class="form-group col-sm-10">
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="name" ng-model="municipality.name" placeholder="Nombre del Municipio">
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="intendente" ng-model="municipality.intendent" placeholder="Intendente">
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="alcalde" ng-model="municipality.alcalde" placeholder="Alcalde">
+                    </div>
+                </div>
+
+                <div class="form-group" ng-controller="DepartmentCtrl">
+                    <div class="col-sm-10">
+                        <select class="form-control notBorder" ng-model="municipality.department_id">
+                            <option ng-repeat="department in departments">{{department.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="language" ng-model="municipality.idioms" placeholder="Lenguaje">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="population" ng-model="municipality.habitants" placeholder="Poblacion">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="superficie" ng-model="municipality.superficie" placeholder="Superficie">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control validate[required]" id="web" ng-model="municipality.website" placeholder="Sitio Web">
+                    </div>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="reset" onclick="reset()" class="btn btn-md btn-warning center-block" value="Reset">
+                        <input type="submit" class="btn btn-md btn-primary center-block" value="Actualizar">
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<script>
+    function reset() {
+        document.getElementById("formID").reset();
+    }
+</script>
