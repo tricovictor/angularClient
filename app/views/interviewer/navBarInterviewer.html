@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default"></nav>
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -16,7 +17,7 @@
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pepito perez<span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li><a href="">Salir</a></li>
+          <li><a ng-controller="LoginCtrl" href="" ng-click="logout()">Salir</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

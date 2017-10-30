@@ -1,5 +1,5 @@
 
-app.controller('LoginCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory', function($scope, $location, $http, loginFactory) {
 
 	$scope.submit = function()
 	{
@@ -7,54 +7,51 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', function($scope, $l
             'email': $scope.jUser,
             'password': $scope.jPass
         };
-        loginFactory.getLogin(parameter).then(function(user,status,headers,config){
-            $scope.user = user.data;
-            console.log(user);
-            if(user.data.response){
-                alert(user.data.response);
-            } else {
-            	if (user.data.type == 'admin')
-            	{
-                	localStorage.setItem("token", 1);
-            	} else {
-                	localStorage.setItem("token", 2);
-            	}
+        parameter = JSON.stringify(parameter);
 
-                localStorage.setItem("id", user.data.id);
-                if(user.data.type=='admin'){
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "http://localhost:8080/rest/users/getLogin",
+          "method": "POST",
+          "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache"
+          },
+          "processData": false,
+          "data": parameter
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            if(response.response){
+                alert(response.response);
+            } else {
+                if (response.type == 'admin')
+                {
+                    localStorage.setItem("token", 'admin');
                     window.location.replace("#!adminHome");
-                }
-                if(user.data.type=='interviewer'){
+                } else {
+                    localStorage.setItem("token", 'interviewer');
                     window.location.replace("#!interviewerHome");
                 }
             }
         });
-        window.location.replace("#!interviewerHome");
 	};
 
-
+    $scope.logout = function()
+    {
+        localStorage.removeItem("token");
+        window.location.replace("#!login");
+    };
 
   }]);
 
 app.factory('loginFactory', ['$http', function($http) 
 {
-    var urlService = 'http://localhost/api/';
-    
+    var urlService = 'http://localhost:8080/rest/users/';
+
     var obj = {};
-
-    obj.getUsers = function()
-    {
-        return $http.get(urlService + 'user');
-    };
-
-    obj.getUser = function(id)
-    {
-        return $http.get(urlService + 'user/' + id);
-    }
-    obj.getLogin = function(parameter)
-    {
-        return $http.post(urlService + 'getlogin',parameter);
-    };
      
     return obj;
 }]); 
