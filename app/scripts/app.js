@@ -70,7 +70,7 @@ var app = angular
         }
       })
 
-      .when('/ambito/index', {
+      .when('/ambitos/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'ambitos/index.html',
         controller: 'AmbitoCtrl',
         data: {
@@ -78,7 +78,7 @@ var app = angular
         }
       })
 
-      .when('/subambito/index', {
+      .when('/subambitos/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'subAmbito/index.html',
         controller: 'SubAmbitoCtrl',
         data: {
@@ -150,8 +150,11 @@ var app = angular
         }
       })
 
+
+
       .when('/adminHome', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'home.html',
+        controller: 'AmbitoCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }
@@ -208,7 +211,6 @@ var app = angular
           authorized: [ROLES.INTERVIEWER.ROL]
         }
       })
-
 
   }])
 
