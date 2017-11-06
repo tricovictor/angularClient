@@ -30,9 +30,11 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory', fun
                 if (response.type == 'admin')
                 {
                     localStorage.setItem("token", 'admin');
+                    localStorage.setItem("tokenrgc", response.id);
                     window.location.replace("#!adminHome");
                 } else {
                     localStorage.setItem("token", 'interviewer');
+                    localStorage.setItem("tokenrgc", response.id);
                     window.location.replace("#!interviewerHome");
                 }
             }

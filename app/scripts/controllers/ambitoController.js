@@ -30,18 +30,9 @@ app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory', function ($scope, ambit
         });
     };
 
-/*    ambitoFactory.getDegrees().then(function(degrees)
-    {
-        $scope.degrees = degrees.data;
-        console.log(degrees);
-    }).catch(function(error){
-        console.log(error);
-    });*/
-
     ambitoFactory.getTypeLevels().then(function(typeslevels)
     {
         $scope.typeslevels = typeslevels.data;
-        console.log(typeslevels.data[0].degrees[0].id);
     }).catch(function(error){
         console.log(error);
     });
@@ -58,9 +49,13 @@ app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory', function ($scope, ambit
         });
     };
 
-    $scope.saveScore = function()
+    $scope.saveScore = function(elegido)
     {
-        console.log($scope);
+        console.log($scope.selectedLevel);
+        console.log(elegido);
+
+
+
     };
 
     $scope.oneAtATime = true;
@@ -89,10 +84,6 @@ app.factory('ambitoFactory', ['$http', function($http)
     {
         return $http.get('http://localhost:8080/rest/typesLevels/all')
     };
-/*    obj.getDegrees = function()
-    {
-        return $http.get('http://localhost:8080/rest/degrees/all');
-    };*/
 
     obj.getLevels = function()
     {
