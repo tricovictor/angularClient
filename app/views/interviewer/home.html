@@ -12,7 +12,7 @@
 
 	<div>
 		<a href="" ng-click="addSurvey()" type="button">Crear Encuesta</a>
-		<a href="" ng-click="editSurvey()" type="button">Editar Encuesta</a>
+		<a href="" ng-click="editSurvey()"  onclick="ocultar()" type="button">Cargar Encuesta</a>
 	</div>
 </div>
 
@@ -51,28 +51,41 @@
 </header>
 
 
-
-
-<div ng-controller="AmbitoCtrl">
-  <uib-accordion close-others="oneAtATime" ng-repeat="ambito in ambitos">
-    <div uib-accordion-group class="panel-success" heading="{{ambito.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-		  <uib-accordion close-others="oneAtATime" ng-repeat="subambito in ambito.subAmbitos">
+<div ng-controller="AmbitoCtrl" id="detalles">
+    <uib-accordion close-others="oneAtATime" ng-repeat="ambito in ambitos">
+        <div uib-accordion-group class="panel-success" heading="{{ambito.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+	 	  <uib-accordion close-others="oneAtATime" ng-repeat="subambito in ambito.subAmbitos">
 		    <div uib-accordion-group class="panel-body" heading="{{subambito.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" ng-click="selectSubAmbito(subambito.id)">
 		    </div>
 		  </uib-accordion>
-    </div>
-  </uib-accordion>
-<ul>
-	<li ng-repeat="degree in typeslevels[selected-1].degrees">
-		<a ng-click="selectLevel(degree.id)">{{degree.name}}</a>
-		<ul>
-			<li ng-if="selectedLevel == level.degreeId && level.degreeId == degree.id" ng-repeat="level in levels">
-				<input type="radio" ng-click="saveScore(level.id)" name="{{selectedLevel}}">{{level.name}}</a>
-			</li>
-		</ul>
-	</li>
-</ul>
-
+        </div>
+    </uib-accordion>
+	<ul>
+		<li ng-repeat="degree in typeslevels[selected-1].degrees">
+			<a ng-click="selectLevel(degree.id)">{{degree.name}}</a>
+			<ul>
+				<li ng-if="selectedLevel == level.degreeId && level.degreeId == degree.id" ng-repeat="level in levels">
+					<div ng-repeat="score in scores">
+						<div ng-if="level.degreeId == score.degree.id && score.subAmbito.id == subambito">
+							<div ng-if="score.levelId == level.id">
+								<input type="radio" ng-click="saveScore(score.id, level.id)" name="{{selectedLevel}}" 
+								ng-checked="true">{{level.name}}</a>
+							</div>
+							<div ng-if="score.levelId != level.id">
+								<input type="radio" ng-click="saveScore(score.id, level.id)" name="{{selectedLevel}}">{{level.name}}</a>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</li>
+	</ul>
 </div>
 
 
+<script>
+	$(detalles).hide();
+	function ocultar() {
+		$(detalles).show();
+	};
+</script>

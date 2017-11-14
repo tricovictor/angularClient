@@ -199,6 +199,7 @@ var app = angular
 
       .when('/interviewerHome', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'home.html',
+        controller: 'SurveyCtrl',
         data: {
           authorized: [ROLES.INTERVIEWER.ROL]
         }

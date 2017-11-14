@@ -3,12 +3,25 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
 
     $scope.message = null;
     $scope.municipality = null;
-	surveyFactory.getSurveys().then(function(surveys)
-	{
-		$scope.surveys = surveys.data;
-	}).catch(function(error){
-		console.log(error);
-	});
+
+  	surveyFactory.getSurveys().then(function(surveys)
+  	{
+  		$scope.surveys = surveys.data;
+  	}).catch(function(error){
+  		console.log(error);
+  	});
+
+    function searchSurvey(id)
+    {
+      surveyFactory.getSurvey(id).then(function(survey)
+      {
+        $scope.survey = survey.data;
+        localStorage.setItem('surveyId',$scope.survey.id);
+        console.log($scope.survey);
+      }).catch(function(error){
+        console.log(error);
+      });
+    }
 
     surveyFactory.getMunicipalities().then(function(municipalities)
     {
@@ -53,7 +66,7 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
 
     $scope.editSurvey = function()
     {
-
+      searchSurvey($scope.municipality);
     };
     
 }]);
@@ -75,6 +88,10 @@ app.factory('surveyFactory', ['$http', function($http)
         return $http.get(urlService + 'all');
     };
 
+    obj.getSurvey = function(id)
+    {
+        return $http.get(urlService + 'getSurveyById/?id=' + id);
+    };
     return obj;
 
 }]); 
