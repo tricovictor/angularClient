@@ -32,6 +32,11 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
 
     $scope.addSurvey = function()
     {
+      if($scope.municipality == null)
+      {
+        alert("Debe seleccionar un municipio");
+
+      } else {
         var parameter = {
             municipalityId: $scope.municipality,
             state: 'activa',
@@ -62,11 +67,19 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
             window.location.replace("#!interviewerHome");
           }
         });
+      }
     };
 
     $scope.editSurvey = function()
     {
-      searchSurvey($scope.municipality);
+      if($scope.municipality == null)
+      {
+        alert("Debe seleccionar un municipio");
+
+      } else {
+
+        searchSurvey($scope.municipality);
+      }
     };
     
 }]);

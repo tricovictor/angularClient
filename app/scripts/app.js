@@ -150,7 +150,19 @@ var app = angular
         }
       })
 
+      .when('/reports/graphics', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsTest.html',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
 
+      .when('/reports/graphicsradar', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsTestRadar.html',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
 
       .when('/adminHome', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'home.html',
