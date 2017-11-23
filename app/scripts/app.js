@@ -151,14 +151,32 @@ var app = angular
       })
 
       .when('/reports/graphics', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsTest.html',
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsBar.html',
+        controller: 'GraphicCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }
       })
 
       .when('/reports/graphicsradar', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsTestRadar.html',
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsRadar.html',
+        controller: 'GraphicCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/reports/graphicsgroup', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsGroups.html',
+        controller: 'GraphicCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/reports/graphicsambitos', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsAmbitos.html',
+        controller: 'GraphicCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }

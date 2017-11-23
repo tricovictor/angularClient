@@ -32,8 +32,12 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#!/adminHome">Gráficos</a>
                             <ul class="dropdown-menu">
-                                <li><a ng-href="#!reports/graphics">Gráfico 1</a></li>
-                                <li><a ng-href="#!reports/graphicsradar">Gráfico 2</a></li>
+                            <div ng-controller="GraphicCtrl">
+                                <li><a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Gráfico Barras</a></li>
+                                <li><a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Gráfico Radar</a></li>
+                                <li><a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Gráfico Por Grupos</a></li>
+                                <li><a ng-href="#!reports/graphicsambitos">Gráfico Por Ambito</a></li>
+                            </div>
                             </ul>
                         </li>
                     </ul>
