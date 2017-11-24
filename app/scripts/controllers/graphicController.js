@@ -26,6 +26,9 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
         if(localStorage.getItem('graphic')=='tres'){
             getGraphicsGroups($scope.surveyid);
         }
+        if(localStorage.getItem('graphic')=='cuatro'){
+            getGraphicsXAmbito($scope.surveyid);
+        }
     };
 
     $scope.cargarGrafico = function(opcion){
@@ -37,6 +40,9 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
         }
         if(opcion == 'tres') {
             localStorage.setItem('graphic','tres');
+        }
+        if(opcion == 'cuatro') {
+            localStorage.setItem('graphic','cuatro');
         }
     };
 
@@ -68,21 +74,28 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
                         labels: labeles,
                         datasets: [{
                             data: datos,
-                            label: todos[i].name,
-                            backgroundColor: 'rgba(00,255,00,0.1)',
-                            borderColor: '#00FF00',
-                            borderWidth: 2
+                            borderWidth: 6,
+                            borderColor: 'rgba(77,166,253,0.85)',
+                            backgroundColor: 'rgba(208, 196, 253, 0.69)'
                         }]
                     },
                         options: {
-                            scales: {
-                                display: false
+                            scale: {
+                                ticks: {
+                                    beginAtZero: true,
+                                    min: 0,
+                                    max: 100,
+                                    stepSize: 20
+                                }
                             },
-                            ticks: {
-                                beginAtZero: true,
-                                min: 0,
-                                max: 100,
-                                stepSize: 20
+                            title: {
+                                display: true,
+                                fontSize: 20,
+                                fontColor: 'rgba(127,191,63,1)',
+                                text: todos[i].name
+                            },
+                            legend: {
+                                display: false
                             }
                         }
                     });
@@ -110,10 +123,11 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
                     console.log(datos);
                     console.log(labeles);
 
-                    var capabar = document.getElementById("capabar");
+                    var capabar = document.getElementById("capa");
                     var ctx = document.createElement("canvas");
                     ctx.setAttribute('id',numero);
-                    capabar.appendChild(ctx);
+                    ctx.setAttribute('width','80%');
+                    capa.appendChild(ctx);
                     var crx = document.getElementById(numero).getContext('2d');
                     var myChart = new Chart(crx, {
                         type: 'bar',
@@ -121,11 +135,26 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
                         labels: labeles,
                         datasets: [{
                             data: datos,
-                            label: todos[i].name
+                            backgroundColor: ["rgba(127,191,63,1)", "rgba(232,119,175,1)", "rgba(232,232,119,1)", "rgba(123,119,232,0.7)"]
                         }]
                     },
                         options: {
                             scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                        max: 100,
+                                        stepSize: 10
+                                    }
+                                }]
+                            },
+                            title: {
+                                display: true,
+                                fontSize: 20,
+                                fontColor: 'rgba(127,191,63,1)',
+                                text: todos[i].name
+                            },
+                            legend: {
                                 display: false
                             }
                         }
@@ -138,25 +167,19 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
     };
 
     function getGraphicsGroups(survey){
-        //graphicFactory.getGraphics(municipality).then(function(response){
+        //graphicFactory.getGraphics(survey).then(function(response){
           //  console.log(response.data);
             graphicFactory.getGraphicsGroups().then(function(response){
                 todos=response.data;
-                console.log(todos);
                 var numero = 0
                 for(var i=0; i< todos.length; i++)
                 {
                     numero++;
-
                     var datos = JSON.parse(todos[i].data);
                     var labeles = JSON.parse(todos[i].labels);
-
-
+                    console.log(datos);
                     if(datos.length !=0)
                     {
-                        console.log(datos);
-                        console.log(labeles);
-                        console.log(todos[i].name);
                         var capa = document.getElementById("capa");
                         var ctx = document.createElement("canvas");
                         ctx.setAttribute('id',numero);
@@ -168,11 +191,27 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
                             labels: labeles,
                             datasets: [{
                                 data: datos,
-                                label: todos[i].name
+                                borderWidth: 6,
+                                borderColor: 'rgba(77,166,253,0.85)',
+                                backgroundColor: 'rgba(208, 196, 253, 0.69)'
                             }]
                         },
                             options: {
-                                scales: {
+                                scale: {
+                                    ticks: {
+                                        beginAtZero: true,
+                                        min: 0,
+                                        max: 100,
+                                        stepSize: 20
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    fontSize: 20,
+                                    fontColor: 'rgba(127,191,63,1)',                               
+                                    text: todos[i].name
+                                },
+                                legend: {
                                     display: false
                                 }
                             }
@@ -185,21 +224,75 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
        // }).catch(function(error){
 
         //});
+
     };
 
-    //donwload pdf from original canvas
-    $scope.downloadPDF = function() {
-      var canvas = document.querySelector('#2');
-        //creates image
-        var canvasImg = canvas.toDataURL("image/jpeg", 1.0);
-      
-        //creates PDF from img
-        var doc = new jsPDF('landscape');
-        doc.setFontSize(20);
-        doc.text(15,15,"Cool Chart");
-        doc.addImage(canvasImg, 'JPEG', 10, 10, 280, 150);
-        doc.save('canvas.pdf');
+
+    function getGraphicsXAmbito(survey){
+        //graphicFactory.getGraphics(survey).then(function(response){
+          //  console.log(response.data);
+            graphicFactory.getGraphicsGroups().then(function(response){
+                todos=response.data;
+                var numero = 0
+                for(var i=0; i< todos.length; i++)
+                {
+                    numero++;
+                    var datos = JSON.parse(todos[i].data);
+                    var labeles = JSON.parse(todos[i].labels);
+                    console.log(datos);
+                    if(datos.length !=0)
+                    {
+                        var capa = document.getElementById("capa");
+                        var ctx = document.createElement("canvas");
+                        ctx.setAttribute('id',numero);
+                        capa.appendChild(ctx);
+                        var crx = document.getElementById(numero).getContext('2d');
+                        var myChart = new Chart(crx, {
+                            type: 'radar',
+                            data: {
+                            labels: labeles,
+                            datasets: [{
+                                data: datos,
+                                borderWidth: 6,
+                                borderColor: 'rgba(77,166,253,0.85)',
+                                backgroundColor: 'rgba(208, 196, 253, 0.69)'
+                            }]
+                        },
+                            options: {
+                                scale: {
+                                    ticks: {
+                                        beginAtZero: true,
+                                        min: 0,
+                                        max: 100,
+                                        stepSize: 20
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    fontSize: 20,
+                                    fontColor: 'rgba(127,191,63,1)',
+                                    text: todos[i].name
+                                },
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        });
+                    }
+                }
+            }).catch(function(error){
+
+            });
+       // }).catch(function(error){
+
+        //});
+
     };
+
+    $scope.generatePDF = function() {kendo.drawing.drawDOM($("#capa")).then(function(group) {
+        kendo.drawing.pdf.saveAs(group, "Converted PDF.pdf");
+        });
+    }
 
 }]);
 

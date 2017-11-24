@@ -6,58 +6,7 @@
 	        </select>
 	    </div>
 	</div>
+  <button class="btn btn-primary" ng-click="generatePDF()"><i class="fa fa-save"></i> Save as PDF</button>
 
+    <div id="capa" class="col-sm-12"></div>
 
-<div id="HTMLtoPDF">
-	<div id="capa" class="col-sm-12"></div>
-</div>
-	<input type="submit" name="guardar" onclick="HTMLtoPDF()" value="Descargar PDF" />
-
-<script type="text/javascript">
-	function DescargarPDF(contendidoId, nombre) {
-		
-		var pdf = new jsPDF('p', 'pt', 'letter');
-
-		html = $('#'+contendidoId).html();
-
-		specialElementHandlers = {};
-
-		margins = {top: 10, bottom: 20, left: 20, width: 522};
-
-		pdf.fromHTML(html, margins.left, margins.top, {'width': margins.width}, function(dispose) 
-			{ pdf.save(nombre+'pdf');}, margins);
-
-	}
-
-</script>
-
-<script type="text/javascript">
-	function HTMLtoPDF(){
-	var pdf = new jsPDF('p', 'pt', 'letter');
-	source = $('#HTMLtoPDF')[0];
-	specialElementHandlers = {
-		'#bypassme': function(element, renderer){
-			return true
-		}
-	}
-	margins = {
-	    top: 50,
-	    left: 60,
-	    width: 545
-	  };
-	pdf.fromHTML(
-	  	source // HTML string or DOM elem ref.
-	  	, margins.left // x coord
-	  	, margins.top // y coord
-	  	, {
-	  		'width': margins.width // max width of content on PDF
-	  		, 'elementHandlers': specialElementHandlers
-	  	},
-	  	function (dispose) {
-	  	  // dispose: object with X, Y of the last line add to the PDF
-	  	  //          this allow the insertion of new lines after html
-	        pdf.save('html2pdf.pdf');
-	      }
-	  )		
-	}	
-</script>

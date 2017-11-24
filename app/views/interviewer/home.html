@@ -16,42 +16,10 @@
 	</div>
 </div>
 
-<!--<header>
-	<a href="http://example.com">
-	<div class="contenedor" id="uno">
-		<img class="icon" src="../../styles/pictures/icon1.png">
-
-		<p class="texto">Smart Environment</p>
-	</div>
-</a>
-	<div class="contenedor" id="dos">
-		<img class="icon" src="../../styles/pictures/icon2.png">
-		<p class="texto">Smart Mobility</p>
-	</div>
-
-	<div class="contenedor" id="tres">
-		<img class="icon" src="../../styles/pictures/icon3.png">
-		<p class="texto">Smart Governance</p>
-	</div>
-
-	<div class="contenedor" id="cuatro">
-		<img class="icon" src="../../styles/pictures/icon4.png">
-		<p class="texto">Smart Economy</p>
-	</div>
-
-	<div class="contenedor" id="cinco">
-		<img class="icon" src="../../styles/pictures/icon5.png">
-		<p class="texto">Smart People</p>
-	</div>
-
-	<div class="contenedor" id="seis">
-		<img class="icon" src="../../styles/pictures/icon6.png">
-		<p class="texto">Smart Living</p>
-	</div>
-</header>-->
 
 
 <div ng-controller="AmbitoCtrl" id="detalles">
+<div class="col-sm-4">
     <uib-accordion close-others="oneAtATime" ng-repeat="ambito in ambitos">
         <div uib-accordion-group class="panel-success" heading="{{ambito.name}}" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
 	 	  <uib-accordion close-others="oneAtATime" ng-repeat="subambito in ambito.subAmbitos">
@@ -60,6 +28,8 @@
 		  </uib-accordion>
         </div>
     </uib-accordion>
+</div>
+<div class="col-sm-8">
 	<ul>
 		<li ng-repeat="degree in typeslevels[selected-1].degrees">
 			<a ng-click="selectLevel(degree.id)">{{degree.name}}</a>
@@ -82,7 +52,7 @@
 	</ul>
 </div>
 
-
+</div>
 <script>
 	$(detalles).hide();
 	function ocultar() {
