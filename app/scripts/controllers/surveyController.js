@@ -4,20 +4,12 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
     $scope.message = null;
     $scope.municipality = null;
 
-  	surveyFactory.getSurveys().then(function(surveys)
-  	{
-  		$scope.surveys = surveys.data;
-  	}).catch(function(error){
-  		console.log(error);
-  	});
-
     function searchSurvey(id)
     {
       surveyFactory.getSurvey(id).then(function(survey)
       {
         $scope.survey = survey.data;
         localStorage.setItem('surveyId',$scope.survey.id);
-        console.log($scope.survey);
       }).catch(function(error){
         console.log(error);
       });
@@ -29,6 +21,36 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
     }).catch(function(error){
         console.log(error);
     });
+
+    surveyFactory.getSurveys().then(function(surveys)
+    {
+      $scope.surveys = surveys.data;
+      $scope.surveysDrop = surveys.data;
+    }).catch(function(error){
+      console.log(error);
+    });
+
+
+    function varios(){
+        for ( var i = 0; i < $scope.surveysDrop.length; i++ ) {
+            for (j = 0; j < $scope.municipalities.length; j++)
+            {
+                if($scope.surveysDrop[i].municipalityId == $scope.municipalities[j].id){
+                    $scope.surveysDrop[i].municipalityId = $scope.municipalities[j].name;
+                }
+            }
+        }
+    };
+
+    $scope.closed = function(id)
+    {
+      alert(id);
+      surveyFactory.closeSurvey(id).then(function(surveys){
+        alert("Encuesta Cerrada");
+      }).catch(function(error){
+
+      });
+    };
 
     $scope.addSurvey = function()
     {
@@ -105,6 +127,12 @@ app.factory('surveyFactory', ['$http', function($http)
     {
         return $http.get(urlService + 'getSurveyById/?id=' + id);
     };
+
+    obj.closeSurvey = function(id)
+    {
+        return $http.get(urlService + 'closeSurvey/?id=' + id);
+    };
+
     return obj;
 
 }]); 

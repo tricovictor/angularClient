@@ -9,13 +9,32 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
         console.log(error);
     });
 
-    graphicFactory.getSurveys().then(function(surveys)
+    graphicFactory.getMunicipalities().then(function(municipalities)
     {
-        $scope.surveys = surveys.data;
-        console.log(surveys.data);
+        $scope.municipalities = municipalities.data;
     }).catch(function(error){
         console.log(error);
     });
+
+    graphicFactory.getSurveys().then(function(surveys)
+    {
+        $scope.surveys = surveys.data;
+        $scope.surveysDrop = surveys.data;
+        varios();
+    }).catch(function(error){
+        console.log(error);
+    });
+
+    function varios(){
+        for ( var i = 0; i < $scope.surveysDrop.length; i++ ) {
+            for (j = 0; j < $scope.municipalities.length; j++)
+            {
+                if($scope.surveysDrop[i].municipalityId == $scope.municipalities[j].id){
+                    $scope.surveysDrop[i].municipalityId = $scope.municipalities[j].name;
+                }
+            }
+        }
+    };
 
     $scope.selected = function(){
         if(localStorage.getItem('graphic')=='uno'){
@@ -374,6 +393,11 @@ app.factory('graphicFactory', ['$http', function($http)
     obj.getGraphicsGroups = function()
     {
         return $http.get('http://localhost:8080/rest/groups/getGraphicsGroup');
+    };
+
+    obj.getMunicipalities = function()
+    {   
+        return $http.get('http://localhost:8080/rest/municipalities/all');
     };
 
     obj.getGraphicsAmbitos = function()

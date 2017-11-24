@@ -118,6 +118,14 @@ var app = angular
         }
       })
 
+      .when('/survey/close', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'survey/close.html',
+        controller: 'SurveyCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/municipality/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'municipality/index.html',
         controller: 'MunicipalityCtrl',
