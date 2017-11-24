@@ -4,7 +4,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
     graphicFactory.getAmbitos().then(function(ambitos)
     {
         $scope.ambitos = ambitos.data;
-        //console.log(ambitos.data);
+        console.log(ambitos.data);
     }).catch(function(error){
         console.log(error);
     });
@@ -12,6 +12,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
     graphicFactory.getSurveys().then(function(surveys)
     {
         $scope.surveys = surveys.data;
+        console.log(surveys.data);
     }).catch(function(error){
         console.log(error);
     });
@@ -50,7 +51,9 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
         graphicFactory.getGraphics(survey).then(function(response){
             console.log(response.data);
             todos=response.data;
-            var numero = 0
+            var numero = 0;
+            var datosarray = 0;
+
             for(var i=0; i< todos.length; i++)
             {
                 numero++;
@@ -60,13 +63,20 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
 
                 if(datos.length !=0)
                 {
-                    console.log(datos);
-                    console.log(labeles);
-
                     var capa = document.getElementById("capa");
                     var ctx = document.createElement("canvas");
                     ctx.setAttribute('id',numero);
                     capa.appendChild(ctx);
+    
+                    for(var j=0; j<datos.length; j++) 
+                    {
+                        var lab = document.createElement("label");
+                        lab.setAttribute('id','lab'+datosarray);
+                        lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
+                        capa.appendChild(lab);
+                        document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                        datosarray++;
+                    }
                     var crx = document.getElementById(numero).getContext('2d');
                     var myChart = new Chart(crx, {
                         type: 'radar',
@@ -111,6 +121,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
             console.log(response.data);
             todos=response.data;
             var numero = 0
+            var datosarray = 0;
             for(var i=0; i< todos.length; i++)
             {
                 numero++;
@@ -128,6 +139,17 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
                     ctx.setAttribute('id',numero);
                     ctx.setAttribute('width','80%');
                     capa.appendChild(ctx);
+                    for(var j=0; j<datos.length; j++) 
+                    {
+                        var lab = document.createElement("label");
+                        lab.setAttribute('id','lab'+datosarray);
+                        lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
+                        capa.appendChild(lab);
+                        document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                        datosarray++;
+                    }
+
+
                     var crx = document.getElementById(numero).getContext('2d');
                     var myChart = new Chart(crx, {
                         type: 'bar',
@@ -167,11 +189,12 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
     };
 
     function getGraphicsGroups(survey){
-        //graphicFactory.getGraphics(survey).then(function(response){
-          //  console.log(response.data);
+        graphicFactory.getGraphics(survey).then(function(response){
+            console.log(response.data);
             graphicFactory.getGraphicsGroups().then(function(response){
                 todos=response.data;
                 var numero = 0
+                var datosarray = 0;
                 for(var i=0; i< todos.length; i++)
                 {
                     numero++;
@@ -184,6 +207,17 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
                         var ctx = document.createElement("canvas");
                         ctx.setAttribute('id',numero);
                         capa.appendChild(ctx);
+
+                        for(var j=0; j<datos.length; j++) 
+                        {
+                            var lab = document.createElement("label");
+                            lab.setAttribute('id','lab'+datosarray);
+                            lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
+                            capa.appendChild(lab);
+                            document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                            datosarray++;
+                        }
+
                         var crx = document.getElementById(numero).getContext('2d');
                         var myChart = new Chart(crx, {
                             type: 'radar',
@@ -221,71 +255,89 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
             }).catch(function(error){
 
             });
-       // }).catch(function(error){
+        }).catch(function(error){
 
-        //});
+        });
 
     };
 
 
     function getGraphicsXAmbito(survey){
-        //graphicFactory.getGraphics(survey).then(function(response){
-          //  console.log(response.data);
+        graphicFactory.getGraphics(survey).then(function(response){
             graphicFactory.getGraphicsGroups().then(function(response){
-                todos=response.data;
-                var numero = 0
-                for(var i=0; i< todos.length; i++)
-                {
-                    numero++;
-                    var datos = JSON.parse(todos[i].data);
-                    var labeles = JSON.parse(todos[i].labels);
-                    console.log(datos);
-                    if(datos.length !=0)
+                graphicFactory.getGraphicsAmbitos().then(function(response){
+                    todos=response.data;
+                    console.log(response.data);
+                    var numero = 0
+                    var datosarray = 0;
+                    for(var i=0; i< todos.length; i++)
                     {
-                        var capa = document.getElementById("capa");
-                        var ctx = document.createElement("canvas");
-                        ctx.setAttribute('id',numero);
-                        capa.appendChild(ctx);
-                        var crx = document.getElementById(numero).getContext('2d');
-                        var myChart = new Chart(crx, {
-                            type: 'radar',
-                            data: {
-                            labels: labeles,
-                            datasets: [{
-                                data: datos,
-                                borderWidth: 6,
-                                borderColor: 'rgba(77,166,253,0.85)',
-                                backgroundColor: 'rgba(208, 196, 253, 0.69)'
-                            }]
-                        },
-                            options: {
-                                scale: {
-                                    ticks: {
-                                        beginAtZero: true,
-                                        min: 0,
-                                        max: 100,
-                                        stepSize: 20
-                                    }
-                                },
-                                title: {
-                                    display: true,
-                                    fontSize: 20,
-                                    fontColor: 'rgba(127,191,63,1)',
-                                    text: todos[i].name
-                                },
-                                legend: {
-                                    display: false
-                                }
+                        numero++;
+                        var datos = JSON.parse(todos[i].data);
+                        var labeles = JSON.parse(todos[i].labels);
+                        if(datos.length !=0)
+                        {
+                            var capa = document.getElementById("capa");
+                            var ctx = document.createElement("canvas");
+                            ctx.setAttribute('id',numero);
+                            capa.appendChild(ctx);
+
+                            for(var j=0; j<datos.length; j++) 
+                            {
+                                var lab = document.createElement("label");
+                                lab.setAttribute('id','lab'+datosarray);
+                                lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
+                                capa.appendChild(lab);
+                                document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                                datosarray++;
                             }
-                        });
+
+
+
+                            var crx = document.getElementById(numero).getContext('2d');
+                            var myChart = new Chart(crx, {
+                                type: 'radar',
+                                data: {
+                                labels: labeles,
+                                datasets: [{
+                                    data: datos,
+                                    borderWidth: 6,
+                                    borderColor: 'rgba(77,166,253,0.85)',
+                                    backgroundColor: 'rgba(208, 196, 253, 0.69)'
+                                }]
+                            },
+                                options: {
+                                    scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                            min: 0,
+                                            max: 100,
+                                            stepSize: 20
+                                        }
+                                    },
+                                    title: {
+                                        display: true,
+                                        fontSize: 20,
+                                        fontColor: 'rgba(127,191,63,1)',
+                                        text: todos[i].name
+                                    },
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            });
+                        }
                     }
-                }
+                }).catch(function(error){
+
+                });
+
             }).catch(function(error){
 
             });
-       // }).catch(function(error){
+        }).catch(function(error){
 
-        //});
+        });
 
     };
 
@@ -322,6 +374,11 @@ app.factory('graphicFactory', ['$http', function($http)
     obj.getGraphicsGroups = function()
     {
         return $http.get('http://localhost:8080/rest/groups/getGraphicsGroup');
+    };
+
+    obj.getGraphicsAmbitos = function()
+    {
+        return $http.get('http://localhost:8080/rest/groups/getGraphicsAmbitos');
     };
 
     return obj;

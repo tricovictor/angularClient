@@ -19,26 +19,13 @@
                     <a ng-href="#!/adminHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">REPORTES<span class="caret"></span></a>
 
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Listados</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#">Listado 1</a></li>
-                                <li><a ng-href="#">Listado 2r</a></li>
-                            </ul>
-                        </li>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" ng-controller="GraphicCtrl">
+                        <li class="dropdown">
 
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Gráficos</a>
-                            <ul class="dropdown-menu">
-                            <div ng-controller="GraphicCtrl">
-                                <li><a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Gráfico Barras</a></li>
-                                <li><a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Gráfico Radar</a></li>
-                                <li><a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Gráfico Por Grupos</a></li>
-                                <li><a ng-click="cargarGrafico('cuatro')" ng-href="#!reports/graphicsambitos">Gráfico Por Ambito</a></li>
-                            </div>
-                            </ul>
+                            <a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Gráfico Barras</a>
+                            <a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Gráfico Radar</a>
+                            <a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Gráfico Por Grupos</a><a ng-click="cargarGrafico('cuatro')" ng-href="#!reports/graphicsambitos">Gráfico Por Ambito</a>
                         </li>
                     </ul>
                 </li>
