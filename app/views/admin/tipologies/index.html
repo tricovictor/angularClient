@@ -1,0 +1,17 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="title">LISTADO DE TIPOLOGIAS</div>
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="tipology in tipologies">
+            <div>
+                {{tipology.id}}
+                {{tipology.name}}
+                <div style="text-align: right;">
+                    <!--<a class="btn-lg btn-success" ng-click="editTipology(tipology.id)" title="Editar"
+                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

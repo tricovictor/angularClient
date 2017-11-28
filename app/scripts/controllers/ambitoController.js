@@ -10,7 +10,6 @@ app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory', function ($scope, ambit
     ambitoFactory.getAmbitos().then(function(ambitos)
     {
         $scope.ambitos = ambitos.data;
-        console.log(ambitos.data);
     }).catch(function(error){
         console.log(error);
     });
@@ -41,7 +40,6 @@ app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory', function ($scope, ambit
     ambitoFactory.getTypeLevels().then(function(typeslevels)
     {
         $scope.typeslevels = typeslevels.data;
-        console.log(typeslevels.data);
     }).catch(function(error){
         console.log(error);
     });

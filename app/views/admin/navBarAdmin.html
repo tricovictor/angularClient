@@ -23,9 +23,9 @@
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" ng-controller="GraphicCtrl">
                         <li class="dropdown">
 
-                            <a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Gráfico Barras</a>
-                            <a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Gráfico Radar</a>
-                            <a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Gráfico Por Grupos</a><a ng-click="cargarGrafico('cuatro')" ng-href="#!reports/graphicsambitos">Gráfico Por Ambito</a>
+                            <a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Informe y Gráfico de Barras</a>
+                            <a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Informe y Gráfico Radar</a>
+                            <a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Informe y Gráfico Por Grupos</a><a ng-click="cargarGrafico('cuatro')" ng-href="#!reports/graphicsambitos">Informe y Gráfico Por Ambito</a>
                         </li>
                     </ul>
                 </li>
@@ -40,7 +40,6 @@
 
                         <li class="dropdown">
                             <a ng-href="#!survey/close">Cerrar Encuestas</a>
-                            <a ng-href="#!technicalDatasheets/create">Fichas TI</a>
                             <a ng-href="#!technicalDatasheets/index">Soluciones IT</a>
                         </li>
                     </ul>
@@ -70,13 +69,13 @@
                             </ul>
                         </li>
 
-                        <li class="dropdown-submenu">
+                        <!--<li class="dropdown-submenu">
                             <a tabindex="-1" href="#!/adminHome">Empresas</a>
                             <ul class="dropdown-menu">
                                 <li><a ng-href="#">Añadir</a></li>
                                 <li><a ng-href="#">Listar</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                 </li>
             </ul>
@@ -91,7 +90,6 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#!/adminHome">Ambitos</a>
                             <ul class="dropdown-menu">
-                                <li><a ng-href="#">Añadir</a></li>
                                 <li><a ng-href="#!ambitos/index">Listar</a></li>
                             </ul>
                         </li>
@@ -99,7 +97,7 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#!/adminHome">Sub-Ambitos</a>
                             <ul class="dropdown-menu">
-                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#!subambitos/create">Añadir</a></li>
                                 <li><a ng-href="#!subambitos/index">Listar</a></li>
                             </ul>
                         </li>
@@ -123,15 +121,15 @@
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#!/adminHome">Tipologias</a>
                             <ul class="dropdown-menu">
-                                <li><a ng-href="#!typology/create">Añadir</a></li>
-                                <li><a ng-href="#!typology/index">Listar</a></li>
+                                <li><a ng-href="#!tipology/create">Añadir</a></li>
+                                <li><a ng-href="#!tipology/index">Listar</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#!/adminHome">Departamentos</a>
                             <ul class="dropdown-menu">
-                                <li><a ng-href="#">Añadir</a></li>
+                                <li><a ng-href="#!department/create">Añadir</a></li>
                                 <li><a ng-href="#!department/index">Listar</a></li>
                             </ul>
                         </li>

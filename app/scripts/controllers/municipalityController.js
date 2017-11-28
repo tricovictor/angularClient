@@ -2,6 +2,19 @@
 app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($scope, municipalityFactory) {
 
     $scope.municipality = null;
+
+    municipalityFactory.getDepartments().then(function(departments)
+    {
+        $scope.departments = departments.data;
+    }).catch(function(error){
+        console.log(error);
+    });
+
+    municipalityFactory.getTipologies().then(function(tipologies){
+        $scope.tipologies = tipologies.data;
+    }).catch(function(error){
+        console.log(error);
+    });
 	municipalityFactory.getMunicipalities().then(function(municipalities)
 	{
 		$scope.municipalities = municipalities.data;
@@ -26,16 +39,17 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
             name: $scope.name,
             intendent: $scope.intendente,
             alcalde: $scope.alcalde,
-            department_id: $scope.department_id,
+            departmentId: $scope.departmentId,
             idioms: $scope.language,
             longitude: 0,
             latitude: 0,
-            population: $scope.population,
+            habitants: $scope.population,
             superficie: $scope.superficie,
+            tipologyId: $scope.tipologyId,
             website: $scope.web
         };
         parameter = JSON.stringify(parameter);
-
+        console.log(parameter);
        var settings = {
           "async": true,
           "crossDomain": true,
@@ -50,6 +64,7 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
         };
         $.ajax(settings).done(function (response) {
           $scope.message = response;
+          console.log(response);
           console.log(response);
           window.location.replace("#!adminHome");
         });
@@ -68,12 +83,13 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
             name: $scope.municipality.name,
             intendent: $scope.municipality.intendent,
             alcalde: $scope.municipality.alcalde,
-            department_id: $scope.municipality.department_id,
+            departmentId: $scope.municipality.department_id,
             idioms: $scope.municipality.idioms,
             longitude: 0,
             latitude: 0,
             habitants: $scope.municipality.habitants,
             superficie: $scope.municipality.superficie,
+            tipologyId: $scope.municipality.tipologyId,
             website: $scope.municipality.website
         };
         parameter = JSON.stringify(parameter);
@@ -110,6 +126,16 @@ app.factory('municipalityFactory', ['$http', function($http)
     obj.updateMunicipality = function(parameter)
     {
         return $http.put(urlService +'update', parameter);
+    };
+
+    obj.getDepartments = function()
+    {
+        return $http.get('http://localhost:8080/rest/departments/all');
+    };
+
+    obj.getTipologies = function()
+    {
+        return $http.get('http://localhost:8080/rest/tipologies/all');
     };
 
     return obj;

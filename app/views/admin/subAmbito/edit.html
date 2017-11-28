@@ -12,31 +12,31 @@
 <div ng-if="message" class="alert alert-danger" role="alert">
     {{message}}
 </div>
-<div class="title">CREAR SUBAMBITOS</div>
+<div class="title">MODIFICAR SUBAMBITO</div>
 
     <div class="col-sm-10">
 
-        <form class="form-horizontal" role="form" ng-submit="addSubAmbito()" id="formID">
+        <form class="form-horizontal" role="form" ng-submit="updateSubAmbito()" id="formID">
 
             <div class="form-group col-sm-10">
 
                 <div class="form-group">
                     <div class="col-sm-10">
-                       <input type="text" class="form-control validate[required]" ng-model="name" placeholder="Ingrese el nombre">
+                       <input type="text" class="form-control validate[required]" ng-model="subAmbito.name" placeholder="Ingrese el nombre">
                     </div>
                 </div>
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <select class="form-control notBorder" ng-model="ambitoId">
+                            <select class="form-control validate[required]" class="form-control notBorder" ng-model="subAmbito.ambitoId">
                                 <option value="{{subambito.id}}" ng-repeat="subambito in subAmbitos">{{subambito.name}}</option>
                             </select>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <select class="form-control notBorder" ng-model="groupId">
-                                <option value="{{group.id}}" ng-repeat="group in graphsGroups">{{group.name}}</option>
+                            <select class="form-control validate[required]" ng-model="subAmbito.groupId" ng-options="group.name for group in graphsGroups">
+                                <option value="">-- Seleccione grupo a graficar --</option>
+
                             </select>
                         </div>
                     </div>
@@ -44,9 +44,8 @@
 
                  <div class="form-group">
                     <div class="col-sm-10">
-                        <button history-backward><i class="fa fa-backward" aria-hidden="true"></i></button>
                         <input type="reset" onclick="reset()" class="btn btn-md btn-warning center-block" value="Reset">
-                        <input type="submit" class="btn btn-md btn-primary center-block" value="Crear Subambito">
+                        <input type="submit" class="btn btn-md btn-primary center-block" value="Actualizar">
                     </div>
                 </div>
         </form>

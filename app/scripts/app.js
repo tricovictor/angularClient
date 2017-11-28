@@ -86,6 +86,22 @@ var app = angular
         }
       })
 
+      .when('/subambitos/create', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'subAmbito/create.html',
+        controller: 'SubAmbitoCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/subambitos/edit', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'subAmbito/edit.html',
+        controller: 'SubAmbitoCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/degree/index', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'degrees/index.html',
         controller: 'DegreeCtrl',
@@ -158,6 +174,22 @@ var app = angular
         }
       })
 
+      .when('/department/create', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'departments/create.html',
+        controller: 'DepartmentCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/department/edit', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'departments/edit.html',
+        controller: 'DepartmentCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/reports/graphics', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'reports/graphicsBar.html',
         controller: 'GraphicCtrl',
@@ -197,39 +229,34 @@ var app = angular
           authorized: [ROLES.ADMIN.ROL]
         }
       })
-
-      .when('/technicalDatasheets/create', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/create.html',
+     
+      .when('/tipology/create', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/create.html',
+        controller: 'TipologyCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }
       })
 
-      .when('/technicalDatasheets/edit', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/edit.html',
+      .when('/tipology/edit', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/edit.html',
+        controller: 'TipologyCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }
       })
 
-      .when('/technicalDatasheets/index', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'technicalDatasheets/index.html',
-        data: {
-          authorized: [ROLES.ADMIN.ROL]
-        }
-      })
-      
-      .when('/typology/create', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'typologies/create.html',
-        controller: 'TypologyCtrl',
+      .when('/municipality/viewTipology', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'municipality/viewTipology.html',
+        controller: 'TipologyCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }
       })
 
-      .when('/typology/index', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'typologies/index.html',
-        controller: 'TypologyCtrl',
+      .when('/tipology/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/index.html',
+        controller: 'TipologyCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
         }

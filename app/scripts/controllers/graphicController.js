@@ -4,7 +4,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
     graphicFactory.getAmbitos().then(function(ambitos)
     {
         $scope.ambitos = ambitos.data;
-        console.log(ambitos.data);
     }).catch(function(error){
         console.log(error);
     });
@@ -68,7 +67,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
 
     function getGraphicsRadar(survey){
         graphicFactory.getGraphics(survey).then(function(response){
-            console.log(response.data);
             todos=response.data;
             var numero = 0;
             var datosarray = 0;
@@ -137,7 +135,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
 
     function getGraphicsBar(survey){
         graphicFactory.getGraphics(survey).then(function(response){
-            console.log(response.data);
             todos=response.data;
             var numero = 0
             var datosarray = 0;
@@ -209,7 +206,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
 
     function getGraphicsGroups(survey){
         graphicFactory.getGraphics(survey).then(function(response){
-            console.log(response.data);
             graphicFactory.getGraphicsGroups().then(function(response){
                 todos=response.data;
                 var numero = 0
@@ -286,7 +282,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
             graphicFactory.getGraphicsGroups().then(function(response){
                 graphicFactory.getGraphicsAmbitos().then(function(response){
                     todos=response.data;
-                    console.log(response.data);
                     var numero = 0
                     var datosarray = 0;
                     for(var i=0; i< todos.length; i++)
