@@ -1,4 +1,4 @@
-app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, graphicFactory) {
+app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function ($scope, graphicFactory, routeini) {
 
 
     graphicFactory.getAmbitos().then(function(ambitos)
@@ -364,40 +364,40 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', function ($scope, gra
 
 
 
-app.factory('graphicFactory', ['$http', function($http) 
+app.factory('graphicFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/ambitos/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getAmbitos = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'ambitos/all');
     };
 
     obj.getGraphics = function(id)
     {
-    	return $http.get('http://localhost:8080/rest/groups/getGraphics?id=1');
+    	return $http.get(urlService + 'groups/getGraphics?id=1');
     };
 
     obj.getSurveys = function()
     {
-        return $http.get('http://localhost:8080/rest/surveys/all');
+        return $http.get(urlService + 'surveys/all');
     };
 
     obj.getGraphicsGroups = function()
     {
-        return $http.get('http://localhost:8080/rest/groups/getGraphicsGroup');
+        return $http.get(urlService + 'groups/getGraphicsGroup');
     };
 
     obj.getMunicipalities = function()
     {   
-        return $http.get('http://localhost:8080/rest/municipalities/all');
+        return $http.get(urlService + 'municipalities/all');
     };
 
     obj.getGraphicsAmbitos = function()
     {
-        return $http.get('http://localhost:8080/rest/groups/getGraphicsAmbitos');
+        return $http.get(urlService + 'groups/getGraphicsAmbitos');
     };
 
     return obj;

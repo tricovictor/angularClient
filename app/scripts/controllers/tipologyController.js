@@ -1,5 +1,5 @@
 
-app.controller('TipologyCtrl', ['$scope', 'tipologyFactory', function ($scope, tipologyFactory) {
+app.controller('TipologyCtrl', ['$scope', 'tipologyFactory','routeini', function ($scope, tipologyFactory, routeini) {
 
     $scope.subambitos = {};
     $scope.tipologyy = null;
@@ -31,7 +31,6 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory', function ($scope, t
         tipologyFactory.getTipology(localStorage.getItem('tipologyId')).then(function(tipology)
         {
             $scope.tipologyy = tipology.data;
-            console.log($scope.tipologyy);
             tipologyFactory.getSubAmbitosByTipologyById(localStorage.getItem('tipologyId')).then(function(subambitosTipology){
                 $scope.subambitosTipology = subambitosTipology.data;
                 localStorage.removeItem('tipologyId');
@@ -43,6 +42,45 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory', function ($scope, t
         });
     };
 
+    tipologyFactory.getSurveys().then(function(surveys)
+    {
+        $scope.surveysDrop = surveys.data;
+        varios();
+        console.log($scope.surveysDrop);
+    }).catch(function(error){
+        console.log(error);
+    });
+
+    function varios(){
+        var surveysCount = $scope.surveysDrop.length;
+        var municipalityCount = $scope.municipalities.length;
+        alert('aqui');
+
+        for ( var i = 0; i < surveysCount ; i++ ) {
+            for (j = 0; j < municipalityCount ; j++)
+            {
+                if($scope.surveysDrop[i].municipalityId == $scope.municipalities[j].id){
+                    $scope.surveysDrop[i].municipalityId = $scope.municipalities[j].name;
+                }
+            }
+        }
+    };
+
+    function selectedSolutions(){
+        tipologyFactory.getSubAmbitosByTipologyComparative($scope.surveyid).then(function(tipology){
+            $scope.subambitosTipologySolution = tipology.data;
+            $scope.nameTipology = $scope.subambitosTipologySolution[0].nameTipology;
+            $scope.description = $scope.subambitosTipologySolution[0].description;
+            $scope.descriptionExtra = $scope.subambitosTipologySolution[0].descriptionExtra;
+            console.log($scope.subambitosTipologySolution);
+        }).catch(function(error){
+
+        });
+    };
+
+    $scope.selected = function(){
+        selectedSolutions();
+    };
 
     $scope.viewTipology = function(tipologyId) {
         localStorage.setItem('tipologyId',tipologyId);
@@ -67,7 +105,7 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory', function ($scope, t
        var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/tipologies/add",
+          "url": routeini+"tipologies/add",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -108,7 +146,7 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory', function ($scope, t
         var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/tipologies/update",
+          "url": routeini+"tipologies/update",
           "method": "PUT",
           "headers": {
             "content-type": "application/json",
@@ -134,9 +172,9 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory', function ($scope, t
 }]);
 
 
-app.factory('tipologyFactory', ['$http', function($http) 
+app.factory('tipologyFactory', ['$http','routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/';
+    var urlService = routeini;
     
     var obj = {};
 
@@ -150,9 +188,18 @@ app.factory('tipologyFactory', ['$http', function($http)
         return $http.get(urlService + 'tipologies/getSubAmbitosByTipologyById/?id='+id);
     };
 
+    obj.getSurveys = function()
+    {
+        return $http.get(urlService + 'surveys/all');
+    };
+
     obj.getTipology = function(id)
     {
         return $http.get(urlService + 'tipologies/getTipologyById/?id='+id);
+    };
+    obj.getSubAmbitosByTipologyComparative = function(id)
+    {
+        return $http.get(urlService + 'tipologies/getSubAmbitosByTipologyComparative/?id=' + id);
     };
 
     obj.getSubAmbitos = function()

@@ -1,5 +1,5 @@
 
-app.controller('ScoreCtrl', ['$scope', 'scoreFactory', function ($scope, scoreFactory) {
+app.controller('ScoreCtrl', ['$scope', 'scoreFactory', 'routeini', function ($scope, scoreFactory,routeini) {
 
 	scoreFactory.getScores().then(function(scores)
 	{
@@ -11,15 +11,15 @@ app.controller('ScoreCtrl', ['$scope', 'scoreFactory', function ($scope, scoreFa
 }]);
 
 
-app.factory('scoreFactory', ['$http', function($http) 
+app.factory('scoreFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/scores/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getScores = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'scores/all');
     };
 
     return obj;

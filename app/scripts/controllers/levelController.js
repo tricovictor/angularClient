@@ -1,5 +1,5 @@
 
-app.controller('LevelCtrl', ['$scope', 'levelFactory', function ($scope, levelFactory) {
+app.controller('LevelCtrl', ['$scope', 'levelFactory', 'routeini', function ($scope, levelFactory, routeini) {
 
 	levelFactory.getLevels().then(function(levels)
 	{
@@ -11,15 +11,15 @@ app.controller('LevelCtrl', ['$scope', 'levelFactory', function ($scope, levelFa
 }]);
 
 
-app.factory('levelFactory', ['$http', function($http) 
+app.factory('levelFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/levels/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getLevels = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'levels/all');
     };
 
     return obj;

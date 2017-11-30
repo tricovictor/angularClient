@@ -1,5 +1,5 @@
 
-app.controller('DepartmentCtrl', ['$scope', 'departmentFactory', function ($scope, departmentFactory) {
+app.controller('DepartmentCtrl', ['$scope', 'departmentFactory', 'routeini', function ($scope, departmentFactory, routeini) {
 
 	departmentFactory.getDepartments().then(function(departments)
 	{
@@ -30,7 +30,7 @@ app.controller('DepartmentCtrl', ['$scope', 'departmentFactory', function ($scop
        var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/departments/add",
+          "url": routeini+"departments/add",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -72,25 +72,25 @@ app.controller('DepartmentCtrl', ['$scope', 'departmentFactory', function ($scop
 }]);
 
 
-app.factory('departmentFactory', ['$http', function($http) 
+app.factory('departmentFactory', ['$http', 'routeini' , function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/departments/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getDepartments = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'departments/all');
     };
 
     obj.getDepartment = function(id)
     {
-        return $http.get(urlService + 'getDepartmentById/?id='+ id);
+        return $http.get(urlService + 'departments/getDepartmentById/?id='+ id);
     };
 
     obj.updateDepartment = function(parameter)
     {
-        return $http.put(urlService +'update', parameter);
+        return $http.put(urlService +'departments/update', parameter);
     };
 
     return obj;

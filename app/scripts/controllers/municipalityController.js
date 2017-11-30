@@ -1,5 +1,5 @@
 
-app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($scope, municipalityFactory) {
+app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory','routeini', function ($scope, municipalityFactory, routeini) {
 
     $scope.municipality = null;
 
@@ -53,7 +53,7 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
        var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/municipalities/add",
+          "url": routeini+"municipalities/add",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -107,35 +107,35 @@ app.controller('MunicipalityCtrl', ['$scope', 'municipalityFactory', function ($
 }]);
 
 
-app.factory('municipalityFactory', ['$http', function($http) 
+app.factory('municipalityFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/municipalities/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getMunicipalities = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'municipalities/all');
     };
 
     obj.getMunicipality = function(id)
     {
-        return $http.get(urlService + 'getMunicipalityById/?id='+ id);
+        return $http.get(urlService + 'municipalities/getMunicipalityById/?id='+ id);
     };
 
     obj.updateMunicipality = function(parameter)
     {
-        return $http.put(urlService +'update', parameter);
+        return $http.put(urlService +'municipalities/update', parameter);
     };
 
     obj.getDepartments = function()
     {
-        return $http.get('http://localhost:8080/rest/departments/all');
+        return $http.get(urlService + 'departments/all');
     };
 
     obj.getTipologies = function()
     {
-        return $http.get('http://localhost:8080/rest/tipologies/all');
+        return $http.get(urlService + 'tipologies/all');
     };
 
     return obj;

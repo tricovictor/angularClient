@@ -246,6 +246,22 @@ var app = angular
         }
       })
 
+      .when('/tipology/solutionTi', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/solutionTi.html',
+        controller: 'TipologyCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/tipology/viewSolution', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/viewSolution.html',
+        controller: 'TipologyCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/municipality/viewTipology', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'municipality/viewTipology.html',
         controller: 'TipologyCtrl',
@@ -299,6 +315,10 @@ var app = angular
       };
   }])
 
+  //.value('routeini', 'http://localhost:8080/rest/')
+  .value('routeini', 'http://192.168.1.50:8080/smartcity/rest/')
+
+  
   .run(["$rootScope", "$location", "CONFIG", "ROLES", function($rootScope, $location, CONFIG, ROLES)
   {
     $rootScope.$on('$routeChangeStart', function (event, next) 

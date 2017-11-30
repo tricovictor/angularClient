@@ -1,5 +1,5 @@
 
-app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surveyFactory) {
+app.controller('SurveyCtrl', ['$scope', 'surveyFactory', 'routeini', function ($scope, surveyFactory,routeini) {
 
     $scope.message = null;
     $scope.municipality = null;
@@ -70,7 +70,7 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
        var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/surveys/add",
+          "url": routeini+"surveys/add",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -107,30 +107,30 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', function ($scope, surve
 }]);
 
 
-app.factory('surveyFactory', ['$http', function($http) 
+app.factory('surveyFactory', ['$http', 'routeini', function($http,routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/surveys/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getMunicipalities = function()
     {
-        return $http.get('http://localhost:8080/rest/municipalities/all');
+        return $http.get(urlService + 'municipalities/all');
     };
 
     obj.getSurveys = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'surveys/all');
     };
 
     obj.getSurvey = function(id)
     {
-        return $http.get(urlService + 'getSurveyById/?id=' + id);
+        return $http.get(urlService + 'surveys/getSurveyById/?id=' + id);
     };
 
     obj.closeSurvey = function(id)
     {
-        return $http.get(urlService + 'closeSurvey/?id=' + id);
+        return $http.get(urlService + 'surveys/closeSurvey/?id=' + id);
     };
 
     return obj;

@@ -1,5 +1,5 @@
 
-app.controller('UserCtrl', ['$scope', 'userFactory', '$http', function ($scope, userFactory, $http) {
+app.controller('UserCtrl', ['$scope', 'userFactory', '$http', 'routeini', function ($scope, userFactory, $http, routeini) {
    
     $scope.message = null;
     $scope.user = null;
@@ -38,7 +38,7 @@ app.controller('UserCtrl', ['$scope', 'userFactory', '$http', function ($scope, 
        var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/users/add",
+          "url": routeini+"users/add",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -94,30 +94,30 @@ app.controller('UserCtrl', ['$scope', 'userFactory', '$http', function ($scope, 
 
 }]);
 
-app.factory('userFactory', ['$http', function($http) 
+app.factory('userFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/users/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getUsers = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'users/all');
     };
 
     obj.getUser = function(id)
     {
-        return $http.get(urlService +'getUserById/?id='+ id);
+        return $http.get(urlService +'users/getUserById/?id='+ id);
     };
     
     obj.updateUser = function(parameter)
     {
-        return $http.put(urlService +'update', parameter);
+        return $http.put(urlService +'users/update', parameter);
     };
 
     obj.deleteUser = function(id)
     {
-        return $http.get(urlService +'deleteUserById/?id='+ id);
+        return $http.get(urlService +'users/deleteUserById/?id='+ id);
     };
 
     return obj;

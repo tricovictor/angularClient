@@ -1,5 +1,5 @@
 
-app.controller('SubAmbitoCtrl', ['$scope', 'subAmbitoFactory', function ($scope, subAmbitoFactory) {
+app.controller('SubAmbitoCtrl', ['$scope', 'subAmbitoFactory', 'routeini', function ($scope, subAmbitoFactory, routeini) {
 
     $scope.subAmbitosByAmbito = null;
     $scope.message = null;
@@ -51,7 +51,7 @@ app.controller('SubAmbitoCtrl', ['$scope', 'subAmbitoFactory', function ($scope,
        var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/subambitos/add",
+          "url": routeini+"subambitos/add",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -98,36 +98,36 @@ app.controller('SubAmbitoCtrl', ['$scope', 'subAmbitoFactory', function ($scope,
 }]);
 
 
-app.factory('subAmbitoFactory', ['$http', function($http) 
+app.factory('subAmbitoFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/subambitos/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getSubAmbitos = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'subambitos/all');
     };
 
     obj.getSubAmbito = function()
     {
-        return $http.get(urlService + 'getSubAmbitoById?id='+localStorage.getItem('subambito_id'));
+        return $http.get(urlService + 'subambitos/getSubAmbitoById?id='+localStorage.getItem('subambito_id'));
     };
 
     obj.getGraphicsGroups = function()
     {
-        return $http.get('http://localhost:8080/rest/graphGroup/all');
+        return $http.get(urlService + 'graphGroup/all');
     };
 
     obj.updateSubAmbito = function(parameter)
     {
-        return $http.put(urlService +'update', parameter);
+        return $http.put(urlService +'subambitos/update', parameter);
     };
 
 
     obj.getSubAmbitosByAmbito = function(id)
     {
-        return $http.get(urlService + 'getSubAmbitosByAmbito?='+id);
+        return $http.get(urlService + 'subambitos/getSubAmbitosByAmbito?='+id);
     };
 
     return obj;

@@ -1,5 +1,5 @@
 
-app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory', function($scope, $location, $http, loginFactory) {
+app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory','routeini', function($scope, $location, $http, loginFactory, routeini) {
 
 	$scope.submit = function()
 	{
@@ -12,7 +12,7 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory', fun
         var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://localhost:8080/rest/users/getLogin",
+          "url": routeini+"users/getLogin",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -49,9 +49,9 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory', fun
 
   }]);
 
-app.factory('loginFactory', ['$http', function($http) 
+app.factory('loginFactory', ['$http', 'routeini', function($http,routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/users/';
+    var urlService = routeini + 'users/';
 
     var obj = {};
      

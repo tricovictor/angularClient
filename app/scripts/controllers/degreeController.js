@@ -1,5 +1,5 @@
 
-app.controller('DegreeCtrl', ['$scope', 'degreeFactory', function ($scope, degreeFactory) {
+app.controller('DegreeCtrl', ['$scope', 'degreeFactory', 'routeini' , function ($scope, degreeFactory, routeini) {
 
 	degreeFactory.getDegrees().then(function(degrees)
 	{
@@ -11,15 +11,15 @@ app.controller('DegreeCtrl', ['$scope', 'degreeFactory', function ($scope, degre
 }]);
 
 
-app.factory('degreeFactory', ['$http', function($http) 
+app.factory('degreeFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/degrees/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getDegrees = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'degrees/all');
     };
 
     return obj;

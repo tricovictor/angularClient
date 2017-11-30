@@ -1,4 +1,4 @@
-app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory', function ($scope, ambitoFactory) {
+app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory','routeini', function ($scope, ambitoFactory, routeini) {
 
     $scope.subambitos = null;
     $scope.subambito = null;
@@ -89,45 +89,45 @@ app.controller('AmbitoCtrl', ['$scope', 'ambitoFactory', function ($scope, ambit
 
 
 
-app.factory('ambitoFactory', ['$http', function($http) 
+app.factory('ambitoFactory', ['$http', 'routeini', function($http, routeini) 
 {
-    var urlService = 'http://localhost:8080/rest/ambitos/';
+    var urlService = routeini;
     
     var obj = {};
 
     obj.getAmbitos = function()
     {
-        return $http.get(urlService + 'all');
+        return $http.get(urlService + 'ambitos/all');
     };
 
     obj.getSubAmbitos = function()
     {
-        return $http.get('http://localhost:8080/rest/subambitos/all');
+        return $http.get(urlService + 'subambitos/all');
     };
 
     obj.getTypeLevels = function()
     {
-        return $http.get('http://localhost:8080/rest/typesLevels/all')
+        return $http.get(urlService + 'typesLevels/all')
     };
 
     obj.getLevels = function()
     {
-        return $http.get('http://localhost:8080/rest/levels/all');
+        return $http.get(urlService + 'levels/all');
     };
 
     obj.getSubAmbitoTypeLevel = function(subambito_id)
     {
-        return $http.get('http://localhost:8080/rest/subambitostypelevel/getSubAmbitosTypeLevel?id=' + subambito_id);
+        return $http.get(urlService + 'subambitostypelevel/getSubAmbitosTypeLevel?id=' + subambito_id);
     };
 
     obj.getScoreByMunicipality = function(id)
     {
-        return $http.get('http://localhost:8080/rest/scores/getScoreByMunicipality?id=' + id);
+        return $http.get(urlService + 'scores/getScoreByMunicipality?id=' + id);
     };
 
     obj.updateScore = function(parameter)
     {
-        return $http.put('http://localhost:8080/rest/scores/updateScore', parameter);
+        return $http.put(urlService + 'scores/updateScore', parameter);
     };
 
     return obj;
