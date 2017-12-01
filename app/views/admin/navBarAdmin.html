@@ -15,8 +15,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                <ul class="nav navbar-nav">
+
+                <!--   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
+                       <span class="caret"></span></a>-->
+
                 <li class="dropdown">
-                    <a ng-href="#!/adminHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">REPORTES<span class="caret"></span></a>
 
 
@@ -33,7 +37,7 @@
 
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a ng-href="#!/adminHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">INFORMACIÓN<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -48,13 +52,13 @@
 
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a ng-href="#!/adminHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">ENTORNO<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Usuarios</a>
+                            <a tabindex="-1">Usuarios</a>
                             <ul class="dropdown-menu">
                                 <li><a ng-href="#!user/create">Añadir</a></li>
                                 <li><a ng-href="#!user/index">Listar</a></li>
@@ -62,64 +66,42 @@
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Municipios</a>
+                            <a tabindex="-1">Municipios</a>
                             <ul class="dropdown-menu">
                                 <li><a ng-href="#!municipality/create">Añadir</a></li>
                                 <li><a ng-href="#!municipality/index">Listar</a></li>
                             </ul>
                         </li>
 
-                        <!--<li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Empresas</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#">Añadir</a></li>
-                                <li><a ng-href="#">Listar</a></li>
-                            </ul>
-                        </li>-->
                     </ul>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a ng-href="#!/adminHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">CONFIGURACIÓN<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Ambitos</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#!ambitos/index">Listar</a></li>
-                            </ul>
+                        <li class="dropdown">
+                            <a ng-href="#!ambitos/index" tabindex="-1">Listar Ambitos</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a ng-href="#!subambitos/index" tabindex="-1">Listar Sub-Ambitos</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a ng-href="#!degree/index" tabindex="-1">Listar Grados</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a ng-href="#!level/index" tabindex="-1">Listar Niveles</a>
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Sub-Ambitos</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#!subambitos/create">Añadir</a></li>
-                                <li><a ng-href="#!subambitos/index">Listar</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Grados</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#">Añadir</a></li>
-                                <li><a ng-href="#!degree/index">Listar</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Niveles</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#">Añadir</a></li>
-                                <li><a ng-href="#!level/index">Listar</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Tipologias</a>
+                            <a tabindex="-1">Tipologias</a>
                             <ul class="dropdown-menu">
                                 <li><a ng-href="#!tipology/create">Añadir</a></li>
                                 <li><a ng-href="#!tipology/index">Listar</a></li>
@@ -127,7 +109,7 @@
                         </li>
 
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#!/adminHome">Departamentos</a>
+                            <a tabindex="-1">Departamentos</a>
                             <ul class="dropdown-menu">
                                 <li><a ng-href="#!department/create">Añadir</a></li>
                                 <li><a ng-href="#!department/index">Listar</a></li>
@@ -139,7 +121,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a ng-href="#!/adminHome" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Usuario<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a ng-href="">Mi Perfil</a></li>

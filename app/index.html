@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html style="height: 100%">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -14,17 +14,17 @@
 
 
   </head>
-  <body ng-app="smartcityApp" ng-submit="checkLogin()">
+  <body ng-app="smartcityApp" ng-submit="checkLogin()" background="images/background.png" style="background-repeat: no-repeat; background-size: 100% 100%; min-height: 100%;">
  
     <div class="container">
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
+<!--    <div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> SmartCity</p>
       </div>
-    </div>
+    </div>-->
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
