@@ -65,7 +65,7 @@ app.controller('UserCtrl', ['$scope', 'userFactory', '$http', 'routeini', functi
         });
         /*window.location.replace("#!user/index");*/
 
-        setTimeout(function(){location.href="#!user/index"} , 100);
+        setTimeout(function(){location.href="#!user/index"} , 150);
 
 
 
