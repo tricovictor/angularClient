@@ -83,7 +83,13 @@ div.contenedor:hover img.icon{
 }
 
 
-
+div.image {
+	width:70%;
+	height:70%;
+	content:url("../images/background.png");
+	margin:auto;
+	padding:0;
+}​
 
 
 

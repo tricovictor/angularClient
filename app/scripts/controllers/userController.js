@@ -63,7 +63,13 @@ app.controller('UserCtrl', ['$scope', 'userFactory', '$http', 'routeini', functi
         }).catch(function(error){
             console.log(error);
         });
-        window.location.replace("#!adminHome");
+        /*window.location.replace("#!user/index");*/
+
+        setTimeout(function(){location.href="#!user/index"} , 100);
+
+
+
+
     };
 
     $scope.editUser = function(user_id)
