@@ -13,11 +13,11 @@
                 <div style="text-align: right;">
                     <a class="btn-lg btn-success" ng-click="editUser(user.id)" title="Editar"
                    role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a ng-if="user.state == true" class="btn-lg btn-danger" ng-click="deleteUser(user.id)" title="Editar"
-                   role="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    <a ng-if="user.state == true" class="btn-lg btn-danger" ng-click="deleteUser(user.id)" title="Estado"
+                   role="button"><i class="fa fa-user-times" aria-hidden="true"></i></a>
 
-                    <a ng-if="user.state == false" class="btn-lg btn-success" ng-click="deleteUser(user.id)" title="Editar"
-                   role="button"><i class="fa fa-check" aria-hidden="true"></i></a>
+                    <a ng-if="user.state == false" class="btn-lg btn-success" ng-click="deleteUser(user.id)" title="Estado"
+                   role="button"><i class="fa fa-user" aria-hidden="true"></i></a>
 
                 </div>
             </div>
