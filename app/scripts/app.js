@@ -315,8 +315,8 @@ var app = angular
       };
   }])
 
-  //.value('routeini', 'http://localhost:8080/rest/')
-  .value('routeini', 'http://192.168.1.50:8080/smartcity/rest/')
+  .value('routeini', 'http://localhost:8080/rest/')
+  //.value('routeini', 'http://192.168.1.50:8080/smartcity/rest/')
 
   
   .run(["$rootScope", "$location", "CONFIG", "ROLES", function($rootScope, $location, CONFIG, ROLES)
