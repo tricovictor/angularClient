@@ -1,6 +1,7 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
 <div class="title">LISTADO DE MUNICIPIOS</div>
+
 <div>
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="municipality in municipalities">
@@ -12,7 +13,7 @@
                 <div style="text-align: right;">
                     <a class="btn-lg btn-success" ng-click="editMunicipality(municipality.id)" title="Editar"
                    role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    <a ng-controller="TipologyCtrl" class="btn-lg btn-success" ng-click="viewTipology(municipality.tipologyId)" title="Editar"
+                    <a ng-controller="TipologyCtrl" class="btn-lg btn-success" ng-click="viewTipology(municipality.tipologyId)" title="Tipologia"
                    role="button"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
                 </div>
 
@@ -21,5 +22,6 @@
         </li>
     </ul>
 </div>
+
 
 

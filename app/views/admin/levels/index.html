@@ -1,7 +1,8 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
-<div class="title">LISTADO DE NIVELES</div>
-<div>
+<h2 style="text-align: center">LISTADO DE NIVELES</h2>
+<div class="col-md-1"></div>
+<div class="col-md-10">
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="level in levels">
             <div>
@@ -12,12 +13,12 @@
                 {{level.selected}}</br>
                 <div style="text-align: right;">
                     <a class="btn-lg btn-success" ng-click="editUser()" title="Editar"
-                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                       role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </div>
 
             </div>
         </li>
     </ul>
 </div>
-
+<div class="col-md-1"></div>
 

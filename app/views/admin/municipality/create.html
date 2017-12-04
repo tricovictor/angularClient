@@ -7,33 +7,31 @@
 
 
 <div class="container">
-    <div class="col-sm-1"></div>
+
 <div ng-if="message" class="alert alert-danger" role="alert">
     {{message}}
 </div>
 
-    <h4 CLASS="text-center">Registro de Municipio</h4>
+    <div class="title">Registro de Municipio</div>
 
-    <div class="col-sm-10">
-
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
         <form class="form-horizontal" role="form" ng-submit="addMunicipality()" id="formID">
 
-            <div class="form-group col-sm-10">
-
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="name" ng-model="name" placeholder="Nombre del Municipio">
                     </div>
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="intendente" ng-model="intendente" placeholder="Intendente">
                     </div>
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="alcalde" ng-model="alcalde" placeholder="Alcalde">
                     </div>
                 </div>
 
                 <div class="form-group" >
-                    <div class="col-sm-10">
+                    <div>
                         <select class="form-control notBorder" ng-model="departmentId">
                             <option  value="{{department.id}}" ng-repeat="department in departments">{{department.name}}</option>
                         </select>
@@ -41,51 +39,50 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="language" ng-model="language" placeholder="Lenguaje">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="hidden" id="longitude" ng-model="longitude" placeholder="Longitud">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="hidden" id="latitude" ng-model="latitude" placeholder="Latitud">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="population" ng-model="population" placeholder="Poblacion">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="superficie" ng-model="superficie" placeholder="Superficie">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="web" ng-model="web" placeholder="Sitio Web">
                     </div>
                 </div>
 
                 <div class="form-group" >
-                    <div class="col-sm-10">
+                    <div>
                         <select class="form-control notBorder" ng-model="tipologyId">
                             <option  value="{{tipology.id}}" ng-repeat="tipology in tipologies">{{tipology.name}}</option>
                         </select>
                     </div>
                 </div>
 
-            </div>
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <button history-backward><i class="fa fa-backward" aria-hidden="true"></i></button>
                         <input type="reset" onclick="reset()" class="btn btn-md btn-warning center-block" value="Reset">
                         <input type="submit" class="btn btn-md btn-primary center-block" value="Crear Municipio">
@@ -93,7 +90,7 @@
                 </div>
         </form>
     </div>
-    <div class="col-sm-1"></div>
+<div class="col-md-4"></div>
 </div>
 
 <script>

@@ -54,7 +54,7 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory','routeini', function
     function varios(){
         var surveysCount = $scope.surveysDrop.length;
         var municipalityCount = $scope.municipalities.length;
-        alert('aqui');
+ 
 
         for ( var i = 0; i < surveysCount ; i++ ) {
             for (j = 0; j < municipalityCount ; j++)

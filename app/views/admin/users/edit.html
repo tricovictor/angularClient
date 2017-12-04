@@ -7,30 +7,31 @@
 </script>
 
 <div class="container">
-    <div class="col-sm-1"></div>
+
     <div ng-if="message" class="alert alert-danger" role="alert">
         {{message}}
     </div>
 
-    <h4 CLASS="text-center">MODIFICAR USUARIO</h4>
+    <h2 style="text-align: center">MODIFICAR USUARIO</h2>
 
-    <div class="col-sm-10" >
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
 
         <form class="form-horizontal" role="form" ng-submit="updateUser()" >
 
-            <div class="form-group col-sm-10">
+            <div class="for">
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="nombre" ng-model="user.name" placeholder="Nombre">
                     </div>
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="apellido" ng-model="user.lastname" placeholder="Apellido">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <select type="text" class="form-control validate[required]" id="type" ng-model="user.type" placeholder="Genero">
                             <option value="" selected="selected" disabled>Seleccione rol</option>
                             <option value="admin">Administrador</option>
@@ -40,19 +41,19 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="text" class="form-control validate[required]" id="phone" ng-model="user.phone" placeholder="Telefono">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="email" class="form-control validate[required, custom[email]]" id="email" ng-model="user.email" placeholder="Email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-10">
+                    <div>
                         <input type="password" class="form-control validate[required]" id="password" ng-model="user.password" placeholder="Contraseña">
                     </div>
                 </div>
@@ -63,7 +64,7 @@
                 </div>
         </form>
     </div>
-    <div class="col-sm-1"></div>
+    <div class="col-md-4"></div>
 </div>
 
 <script>

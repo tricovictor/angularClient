@@ -1,6 +1,7 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
-<div class="title">LISTADO USUARIOS</div>
+<h2 style="text-align: center">LISTADO USUARIOS</h2>
+
 <div>
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="user in users">
@@ -9,7 +10,7 @@
                 {{user.lastname}}</label></br>
                 {{user.email}}</br>
                 {{user.phone}}
-                {{user.state}}
+                <!--{{user.state}}-->
                 <div style="text-align: right;">
                     <a class="btn-lg btn-success" ng-click="editUser(user.id)" title="Editar"
                    role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -23,8 +24,6 @@
             </div>
         </li>
     </ul>
-    <button history-backward><i class="fa fa-backward" aria-hidden="true"></i></button>
-
 </div>
 
 
