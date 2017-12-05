@@ -8,10 +8,10 @@
     {{message}}
 </div>
 
-    <div class="title">MODIFICAR MUNICIPIO</div>
+    <h2 style="text-align: center">EDITAR MUNICIPIO</h2>
 
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
 
         <form class="form-horizontal" role="form" ng-submit="updateMunicipality()" id="formID">
 
@@ -61,6 +61,7 @@
                 <div class="form-group" >
                     <div>
                         <select class="form-control notBorder" ng-model="municipality.tipologyId">
+                            <option value="" disabled selected hidden>Tipología</option>
                             <option  value="{{tipology.id}}" ng-repeat="tipology in tipologies">{{tipology.name}}</option>
                         </select>
                     </div>
@@ -68,14 +69,12 @@
 
                 <div class="form-group">
                     <div>
-                        <a ng-href="#!municipality/index"><i class="fa fa-backward" aria-hidden="true"></i></a>
-                        <input type="reset" onclick="reset()" class="btn btn-md btn-warning center-block" value="Reset">
-                        <input type="submit" class="btn btn-md btn-primary center-block" value="Actualizar">
+                        <input type="submit" class="btn btn-md btn-primary center-block" value="ACEPTAR">
                     </div>
                 </div>
         </form>
     </div>
-<div class="col-md-4"></div>
+<div class="col-md-3"></div>
 </div>
 
 <script>

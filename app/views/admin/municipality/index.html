@@ -1,14 +1,45 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
-<div class="title">LISTADO DE MUNICIPIOS</div>
+<h2 style="text-align: center">LISTADO DE MUNICIPIOS</h2>
 
-<div>
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <ul class="list-group">
+            <li class="list-group-item col-md-12" ng-repeat="municipality in municipalities">
+
+                <div class="col-md-2" style="margin: 0px; padding: 0px; text-align: right;">
+                    <b>Nombre:</b></br>
+                    <b>Intendente:</b></br>
+                    <b>Alcalde:</b></br>
+                </div>
+                <div class="col-md-5">
+                    <b>{{municipality.name}}</b></br>
+                    {{municipality.intendent}}</br>
+                    {{municipality.language}}</br>
+                    </br>
+                </div>
+                <div class="col-md-5" style="text-align: right;">
+                    </br>
+                    <a class="btn-lg btn-success" ng-click="editMunicipality(municipality.id)" title="Editar"
+                       role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a ng-controller="TipologyCtrl" class="btn-lg btn-success" ng-click="viewTipology(municipality.tipologyId)" title="Tipologia"
+                       role="button"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+
+<!--<div>
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="municipality in municipalities">
             <div>
-                {{municipality.id}}
-                {{municipality.name}}
-                {{municipality.idioms}}
+                <b>{{municipality.name}}</b> -
                 {{municipality.intendent}}
                 <div style="text-align: right;">
                     <a class="btn-lg btn-success" ng-click="editMunicipality(municipality.id)" title="Editar"
@@ -21,7 +52,6 @@
             </div>
         </li>
     </ul>
-</div>
-
+</div>-->
 
 
