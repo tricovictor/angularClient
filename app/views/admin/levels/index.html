@@ -1,3 +1,4 @@
+<!--
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
 <h2 style="text-align: center">LISTADO DE NIVELES</h2>
@@ -16,9 +17,34 @@
                        role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </div>
 
+
             </div>
         </li>
     </ul>
 </div>
 <div class="col-md-1"></div>
+-->
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<h2 style="text-align: center">LISTADO DE NIVELES</h2>
+
+<div class="container">
+
+    <ul class="list-group">
+        <li class="list-group-item col-md-12" ng-repeat="level in levels">
+
+            <div class="col-md-1" style="margin: 0px; padding: 0px; text-align: right;">
+                <b>Grado:</b>
+            </div>
+            <div class="col-md-9">
+                {{level.name}} <b> - SubAmbito:</b>{{degree.subambito_id}} //revisar no trae el dato
+
+            </div>
+            <div class="col-md-2" style="text-align: right;">
+                <a class="btn-lg btn-success" ng-click="editUser()" title="Editar"
+                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            </div>
+        </li>
+    </ul>
+</div>
 

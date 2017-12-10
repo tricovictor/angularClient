@@ -1,32 +1,78 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
-	<div class="form-group">
-	    <div class="col-sm-10">
-	        <select class="form-control notBorder" ng-model="surveyid" ng-change="selected()">
-	            <option value="{{survey.id}}" ng-repeat="survey in surveysDrop">{{survey.finaldate | date:'longDate' }} Municipio de {{survey.municipalityId}}</option>
-	        </select>
-	    </div>
-	</div>
-	{{nameTipology}}</br>
-	{{description}}</br>
-	{{descriptionExtra}}</br>
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="sol in subambitosTipologySolution">
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2 style="text-align: center">SOLUCIONES IT</h2>
+        <div id="menu" class="form-group">
             <div>
-               {{sol.subAmbitos}}
-               Puntaje {{sol.score}}
-               <ul>
-               		<li ng-repeat="business in sol.businessList">{{business.name}}</li>
-               </ul>
+                <p>Este informe contiene la Tipología asociada al Municipio con su descripción.
+                    Además un listado dinámico con únicamente los Sub-Ambitos asociados a la tipología,
+                    que no cumplen con el puntaje mínimo establecido y datos de empresas que atienden estos rubros.</p>
+                <select id="drop" name="drop" class="form-control notBorder" ng-model="surveyid" ng-change="selected()">
+                    <option value="" disabled selected hidden>Seleccione Informe...</option>
+                    <option value="{{survey.id}}" ng-repeat="survey in surveysDrop">{{survey.finaldate | date:'longDate'
+                        }} Municipio de {{survey.municipalityId}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        </br></br>
+
+        <div id="preload" style="display:none; position:absolute; top:70%; margin-left:30%;">
+            <img src="../../../images/loading_spinner.gif"/>
+        </div>
+
+        <div id="content" style="display:none;" class="form-group">
+            <h4 style="text-align: center;">{{nameTipology}}</h4></br>
+            {{description}}</br></br>
+            {{descriptionExtra}}</br></br>
+
+            <h4 style="text-align: center">SUB-AMBITOS QUE NO CUMPLEN CON EL PUNTAJE MÍNIMO:</h4></br>
+
+
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="sol in subambitosTipologySolution">
+                    <p style="text-align:left;">
+                        {{sol.subAmbitos}}
+                        <span style="float:right;"><b>Puntaje:</b> {{sol.score}}</span>
+                    </p>
+
+
+                    <!-- LISTADO DE EMPRESAS PARA REVISAR  -->
+                    <ul>
+                        <li ng-repeat="business in sol.businessList">{{business.name}}</li>
+                    </ul>
+                    <!-- LISTADO DE EMPRESAS PARA REVISAR  -->
+
+
+                </li>
+            </ul>
+
+            <div style="text-align: center;">
+                <button class="btn btn-primary" ng-click="generatePDF()">GUARDAR PDF</button>
             </div>
 
-                </br>
-            </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+
+    <div class="col-md-3"></div>
+</div>
 
 
-    <div id="capa" class="col-sm-12">
-	</div>
-  <button class="btn btn-primary" ng-click="generatePDF()"><i class="fa fa-save"></i> Save as PDF</button>
+<script type="text/javascript">
+    var elem = document.getElementById("drop");
+    elem.onchange = function () {
 
+        document.getElementById("preload").style.display = (this.value == "") ? "none" : "block";
+
+        $("#menu").delay(0).fadeOut(50, function () {
+            $(this).hide();
+            $("#preload").delay(18000).fadeOut(1000, function () {
+                $(this).hide();
+            });
+        });
+        $("#content").delay(19000).fadeIn(1000);
+    };
+</script>

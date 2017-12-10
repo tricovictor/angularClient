@@ -1,19 +1,29 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
 <h2 style="text-align: center">LISTADO DE AMBITOS</h2>
-<div>
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="ambito in ambitos">
-            <div>
-                {{ambito.id}}
-                {{ambito.name}}</br>
-                <div style="text-align: right;">
-                    <a class="btn-lg btn-success" ng-click="editUser()" title="Editar"
-                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
 
+<div class="container">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <ul class="list-group">
+            <li class="list-group-item col-md-12" ng-repeat="ambito in ambitos">
+
+                <div class="col-md-2" style="margin: 0px; padding: 0px; text-align: right;">
+                    </br><b>Ambito:</b> </br>
+                </div>
+                <div class="col-md-5">
+                    </br>{{ambito.name}}</br>
+                </div>
+                <div class="col-md-5" style="text-align: right;">
+                    </br>
+                    <a class="btn-lg btn-success" ng-click="editUser()" title="Editar"
+                       role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </br></br>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-3"></div>
+</div>
 
