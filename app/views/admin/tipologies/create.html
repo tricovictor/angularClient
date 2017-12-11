@@ -1,92 +1,88 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
 <script>
-    jQuery(document).ready(function(){
+    jQuery(document).ready(function () {
         jQuery("#formID").validationEngine('attach');
     });
 </script>
 
-
-
-<div class="container">
-    <div class="col-sm-1"></div>
 <div ng-if="message" class="alert alert-danger" role="alert">
     {{message}}
 </div>
 
-    <h4 CLASS="text-center">REGISTRO DE TIPOLOGIA</h4>
 
-    <div class="col-sm-10">
+<div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 style="text-align: center">EDITAR TIPOLOGIA</h2>
+
 
         <form class="form-horizontal" role="form" ng-submit="updateTipology()" id="formID">
 
-            <div class="form-group col-sm-10">
-
-                <div class="form-group" >
-                    <div class="col-sm-10">
-                        <select class="form-control notBorder" ng-model="tipologyId" ng-change="editTipology()">
-                            <option value="{{tipology.id}}" ng-repeat="tipology in tipologies">{{tipology.name}}</option>
-                        </select>
-                    </div>
+            <div id="menu" class="form-group">
+                <select id="drop" name="drop" class="form-control notBorder" ng-model="tipologyId"
+                        ng-change="editTipology()">
+                    <option value="" disabled selected hidden>Seleccione ...</option>
+                    <option value="{{tipology.id}}" ng-repeat="tipology in tipologies">{{tipology.name}}
+                    </option>
+                </select>
                 </div>
 
-                <div class="form-group" >
-                    <div class="col-sm-10">
-                        <textarea type="text" ng-model="tipology.name"></textarea>
-                    </div>
-                </div>
-                <div class="form-group" >
-                    <div class="col-sm-10">
-                        <textarea ng-model="tipology.description"></textarea>
-                    </div>
-                </div>
-                <div class="form-group" >
-                    <div class="col-sm-10">
-                        <textarea type="textarea" ng-model="tipology.descriptionExtra"></textarea>
-                    </div>
+            <div id="preload" style="display:none; position:absolute; top:80%; margin-left:37%;">
+                <img src="../../../images/loading_spinner.gif"/>
                 </div>
 
 
+            <div id="content" style="display:none;" class="form-group">
+                </br>
 
-                <div class="form-group" >
-                    <div class="col-sm-10">
-                    <ul>
-                        <li ng-repeat="subambito in subAmbitos">
-                            <input type="checkbox" ng-model="subambitos[subambito.id]" value="subambito.id">{{subambito.name}}
+                <div class="form-group">
+
+                    <div>
+                        <textarea style="min-width: 100%" type="text" ng-model="tipology.name"></textarea>
+                    </div>
+
+                    <div>
+                        <textarea style="min-width: 100%" rows="4" ng-model="tipology.description"></textarea>
+                    </div>
+
+                    <div>
+                        <textarea style="min-width: 100%" rows="4" type="textarea"
+                                  ng-model="tipology.descriptionExtra"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h3 style="text-align: center">SUB-AMBITOS ASOCIADOS</h3></br>
+                    <ul class="list-group checked-list-box">
+                        <li class="list-group-item" ng-repeat="subambito in subAmbitos">
+                            <input style="margin-right:10px;" type="checkbox" ng-model="subambitos[subambito.id]"
+                                   value="subambito.id">{{subambito.name}}
                         </li>
-                    </div>
                     </ul>
                 </div>
 
-
-
-            </div> <!-- cierro div class="form-group col-sm-10" --> 
-
                 <div class="form-group">
-                    <input type="reset" onclick="reset()" class="btn btn-md btn-warning center-block" value="Cancelar">
-                    <input type="submit" class="btn btn-md btn-primary center-block" value="Crear">
+                    <input type="submit" class="btn btn-md btn-primary center-block" value="ACTUALIZAR">
+                </div>
                 </div>
         </form>
-    </div><!-- cierro div class="col-sm-10" --> 
-    <div class="col-sm-1"></div>
-</div> <!-- cierro div container -->  
+    </div>
+    <div class="col-md-2"></div>
+</div>
 
-<script>
-    function reset() {
-        document.getElementById("formID").reset();
-    }
+<script type="text/javascript">
+    var elem = document.getElementById("drop");
+    elem.onchange = function () {
+
+        document.getElementById("preload").style.display = (this.value == "") ? "none" : "block";
+
+        $("#menu").delay(0).fadeOut(50, function () {
+            $(this).hide();
+            $("#preload").delay(0).fadeOut(3000, function () {
+                $(this).hide();
+            });
+        });
+        $("#content").delay(3000).fadeIn(1000);
+    };
 </script>
-
-<!--     <div class="form-group">
-                    <div class="col-sm-10">
-                                          
-                       <md-list ng-controller="AmbitoCtrl" ng-cloak="" class="listdemoListControls form-control validate[required]" >
-                       <md-subheader class="md-no-sticky">Elija los ambitos</md-subheader>
-                       <md-list-item ng-repeat="ambito in ambitos">
-                             <p> {{ ambito.name }} </p>
-                             <md-checkbox class="md-secondary" ng-model="ambito.wanted"></md-checkbox>
-                       </md-list-item>
-                       <md-divider> </md-divider>  
-
-                    </div>
-                </div>
-            -->
