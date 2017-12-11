@@ -5,14 +5,12 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
     {
         $scope.ambitos = ambitos.data;
     }).catch(function(error){
-        console.log(error);
     });
 
     graphicFactory.getMunicipalities().then(function(municipalities)
     {
         $scope.municipalities = municipalities.data;
     }).catch(function(error){
-        console.log(error);
     });
 
     graphicFactory.getSurveys().then(function(surveys)
@@ -23,7 +21,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
     }).catch(function(error){
         console.log(error);
     });
-
     function varios(){
         for ( var i = 0; i < $scope.surveysDrop.length; i++ ) {
             for (j = 0; j < $scope.municipalities.length; j++)
@@ -51,6 +48,8 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
     };
 
     $scope.cargarGrafico = function(opcion){
+        setTimeout(function(){},1000); 
+
         if(opcion == 'uno'){
             localStorage.setItem('graphic','uno');
         }
