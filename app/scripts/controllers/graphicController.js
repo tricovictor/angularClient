@@ -205,8 +205,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
     };
 
     function getGraphicsGroups(survey){
-        graphicFactory.getGraphics(survey).then(function(response){
-            graphicFactory.getGraphicsGroups().then(function(response){
+        graphicFactory.getGraphicsGroups(survey).then(function (response) {
                 todos=response.data;
                 var numero = 0
                 var datosarray = 0;
@@ -270,17 +269,12 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
             }).catch(function(error){
 
             });
-        }).catch(function(error){
-
-        });
 
     };
 
 
     function getGraphicsXAmbito(survey){
-        graphicFactory.getGraphics(survey).then(function(response){
-            graphicFactory.getGraphicsGroups().then(function(response){
-                graphicFactory.getGraphicsAmbitos().then(function(response){
+        graphicFactory.getGraphicsAmbitos(survey).then(function (response) {
                     todos=response.data;
                     var numero = 0
                     var datosarray = 0;
@@ -345,14 +339,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                 }).catch(function(error){
 
                 });
-
-            }).catch(function(error){
-
-            });
-        }).catch(function(error){
-
-        });
-
     };
 
     $scope.generatePDF = function() {kendo.drawing.drawDOM($("#capa")).then(function(group) {
@@ -375,29 +361,29 @@ app.factory('graphicFactory', ['$http', 'routeini', function($http, routeini)
         return $http.get(urlService + 'ambitos/all');
     };
 
+
+    obj.getSurveys = function () {
+        return $http.get(urlService + 'surveys/all');
+    };
+
     obj.getGraphics = function(id)
     {
     	return $http.get(urlService + 'groups/getGraphics?id=1');
     };
 
-    obj.getSurveys = function()
+    obj.getGraphicsGroups = function (id)
     {
-        return $http.get(urlService + 'surveys/all');
+        return $http.get(urlService + 'groups/getGraphicsGroup?id=' + id);
     };
 
-    obj.getGraphicsGroups = function()
+    obj.getGraphicsAmbitos = function (id)
     {
-        return $http.get(urlService + 'groups/getGraphicsGroup');
+        return $http.get(urlService + 'groups/getGraphicsAmbitos?id=' + id);
     };
 
     obj.getMunicipalities = function()
     {   
         return $http.get(urlService + 'municipalities/all');
-    };
-
-    obj.getGraphicsAmbitos = function()
-    {
-        return $http.get(urlService + 'groups/getGraphicsAmbitos');
     };
 
     return obj;

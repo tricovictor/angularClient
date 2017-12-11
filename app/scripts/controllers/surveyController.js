@@ -44,11 +44,32 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', 'routeini', function ($
 
     $scope.closed = function(id)
     {
-      alert(id);
-      surveyFactory.closeSurvey(id).then(function(surveys){
-        alert("Encuesta Cerrada");
-      }).catch(function(error){
+        surveyFactory.validateSurvey(id).then(function (response) {
+            if (response.data.response == "") {
+                surveyFactory.getGraphics(id).then(function (response) {
+                    surveyFactory.getGraphicsGroups(id).then(function (response) {
+                        surveyFactory.getGraphicsAmbitos(id).then(function (response) {
+                            surveyFactory.closeSurvey(id).then(function (surveys) {
+                                alert("Encuesta Cerrada");
+                                window.location.replace("#!adminHome");
 
+                            }).catch(function (error) {
+
+                            });
+                        }).catch(function (error) {
+
+                        });
+                    }).catch(function (error) {
+
+                    });
+                }).catch(function (error) {
+
+                });
+            } else {
+                alert(response.data.response);
+            }
+        }).catch(function (error) {
+            alert("Encuesta Incompleta");
       });
     };
 
@@ -131,6 +152,22 @@ app.factory('surveyFactory', ['$http', 'routeini', function($http,routeini)
     obj.closeSurvey = function(id)
     {
         return $http.get(urlService + 'surveys/closeSurvey/?id=' + id);
+    };
+
+    obj.getGraphics = function (id) {
+        return $http.get(urlService + 'groups/generateGraphics?id=1');
+    };
+
+    obj.getGraphicsGroups = function (id) {
+        return $http.get(urlService + 'groups/generateGraphicsGroup?id=' + id);
+    };
+
+    obj.getGraphicsAmbitos = function (id) {
+        return $http.get(urlService + 'groups/generateGraphicsAmbitos?id=' + id);
+    };
+
+    obj.validateSurvey = function (id) {
+        return $http.get(urlService + 'surveys/validateSurvey?id=' + id)
     };
 
     return obj;

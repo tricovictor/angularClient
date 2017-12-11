@@ -8,11 +8,10 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory','rou
             'password': $scope.jPass
         };
         parameter = JSON.stringify(parameter);
-
         var settings = {
           "async": true,
           "crossDomain": true,
-          "url": routeini+"users/getLogin",
+            "url": routeini + "users/getLoginweb",
           "method": "POST",
           "headers": {
             "content-type": "application/json",
@@ -23,7 +22,6 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory','rou
         }
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
             if(response.response){
                 alert(response.response);
             } else {

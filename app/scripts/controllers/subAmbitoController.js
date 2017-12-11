@@ -26,6 +26,12 @@ app.controller('SubAmbitoCtrl', ['$scope', 'subAmbitoFactory', 'routeini', funct
         });
     }
 
+    subAmbitoFactory.getAmbitos().then(function (ambitos) {
+        $scope.ambitos = ambitos.data;
+    }).catch(function (error) {
+        console.log(error);
+    });
+
 
     subAmbitoFactory.getGraphicsGroups().then(function(response){
         $scope.graphsGroups = response.data;
@@ -128,6 +134,10 @@ app.factory('subAmbitoFactory', ['$http', 'routeini', function($http, routeini)
     obj.getSubAmbitosByAmbito = function(id)
     {
         return $http.get(urlService + 'subambitos/getSubAmbitosByAmbito?='+id);
+    };
+
+    obj.getAmbitos = function () {
+        return $http.get(urlService + 'ambitos/all');
     };
 
     return obj;
