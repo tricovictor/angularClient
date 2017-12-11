@@ -1,66 +1,84 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
 <script>
-    jQuery(document).ready(function(){
+    jQuery(document).ready(function () {
         jQuery("#formID").validationEngine('attach');
     });
 </script>
 
-
-
-<div class="container">
-    <div class="col-sm-1"></div>
 <div ng-if="message" class="alert alert-danger" role="alert">
     {{message}}
 </div>
 
-    <h4 CLASS="text-center">REGISTRO DE EMPRESAS</h4>
 
-    <div class="col-sm-10">
+<div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 style="text-align: center">EMPRESA</h2>
+
 
         <form class="form-horizontal" role="form" ng-submit="updateSubAmbito()" id="formID">
 
-            <div class="form-group col-sm-10">
+            <div id="content" class="form-group">
 
                 <div class="form-group">
-                    <div>
-                        <input disabled="disabled" type="text" class="form-control validate[required]" id="nombre" ng-model="busines.name">
-                    </div>
-                    <div>
-                        <input disabled="disabled" type="text" class="form-control validate[required]" id="apellido" ng-model="busines.description">
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+                            <input disabled="disabled" type="text" class="form-control validate[required]"
+                                   id="nombre" ng-model="busines.name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input disabled="disabled" type="text" class="form-control validate[required]"
+                                   id="apellido" ng-model="busines.description">
+                        </div>
+                        </br>
+                        <div class="form-group col-md-6">
+                            <input disabled="disabled" type="text" class="form-control validate[required]"
+                                   id="address" ng-model="busines.address">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input disabled="disabled" type="text" class="form-control validate[required]"
+                                   id="phone" ng-model="busines.phone">
+                        </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="form-group">
+                <h3 style="text-align: center">SUB-AMBITOS ASOCIADOS</h3></br>
+                <ul class="list-group checked-list-box">
 
-                <div class="form-group">
-                    <div>
-                        <input disabled="disabled" type="text" class="form-control validate[required]" id="address" ng-model="busines.address">
-                    </div>
+                    <li class="list-group-item" ng-repeat="subambito in subAmbitos">
+                        <input style="margin-right:10px;" type="checkbox"
+                               ng-model="subambitos[subambito.id]"
+                               value="subambito.id">{{subambito.name}}
+                    </li>
+                </ul>
+            </div>
 
-                    <div>
-                        <input disabled="disabled" type="text" class="form-control validate[required]" id="phone" ng-model="busines.phone">
-                    </div>
-                </div>
-
-
-
-                <div class="form-group" >
-                    <div class="col-sm-10">
-                    <ul>
-                        <li ng-repeat="subambito in subAmbitos">
-                            <input type="checkbox" ng-model="subambitos[subambito.id]" value="subambito.id">{{subambito.name}}
-                        </li>
-                    </div>
-                    </ul>
-                </div>
-
-
-
-            </div> <!-- cierro div class="form-group col-sm-10" --> 
-
-                <div class="form-group">
-                    <input type="submit" class="btn btn-md btn-primary center-block" value="Guardar">
-                </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-md btn-primary center-block" value="ACTUALIZAR">
+            </div>
         </form>
-    </div><!-- cierro div class="col-sm-10" --> 
-    <div class="col-sm-1"></div>
-</div> <!-- cierro div container -->  
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+</div>
+
+<script type="text/javascript">
+    var elem = document.getElementById("drop");
+    elem.onchange = function () {
+
+        document.getElementById("preload").style.display = (this.value == "") ? "none" : "block";
+
+        $("#menu").delay(0).fadeOut(50, function () {
+            $(this).hide();
+            $("#preload").delay(0).fadeOut(50, function () {
+                $(this).hide();
+            });
+        });
+        $("#content").delay(0).fadeIn(500);
+    };
+</script>
