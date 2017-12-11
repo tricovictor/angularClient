@@ -1,12 +1,11 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
 
-
 <div class="container">
 
-<div ng-if="message" class="alert alert-danger" role="alert">
-    {{message}}
-</div>
+    <div ng-if="message" class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
 
     <h2 style="text-align: center">EDITAR MUNICIPIO</h2>
 
@@ -15,66 +14,79 @@
 
         <form class="form-horizontal" role="form" ng-submit="updateMunicipality()" id="formID">
 
-                <div class="form-group">
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="name" ng-model="municipality.name" placeholder="Nombre del Municipio">
-                    </div>
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="intendente" ng-model="municipality.intendent" placeholder="Intendente">
-                    </div>
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="alcalde" ng-model="municipality.alcalde" placeholder="Alcalde">
-                    </div>
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control validate[required]" id="name" ng-model="municipality.name"
+                           placeholder="Nombre del Municipio">
                 </div>
+                <div>
+                    <input type="text" class="form-control validate[required]" id="intendente"
+                           ng-model="municipality.intendent" placeholder="Intendente">
+                </div>
+                <div>
+                    <input type="text" class="form-control validate[required]" id="alcalde"
+                           ng-model="municipality.alcalde" placeholder="Alcalde">
+                </div>
+            </div>
 
-                <div class="form-group" ng-controller="DepartmentCtrl">
-                    <div>
-                        <select class="form-control notBorder" ng-model="municipality.department_id">
-                            <option ng-selected="{{department.id==municipality.department_id}}" value="{{department.id}}" ng-repeat="department in departments">{{department.name}}</option>
-                        </select>
-                    </div>
-                </div>
+            <div class="form-group" ng-controller="DepartmentCtrl">
+                <div>
+                    <select class="form-control notBorder" ng-model="municipality.department_id">
 
-                <div class="form-group">
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="language" ng-model="municipality.idioms" placeholder="Lenguaje">
-                    </div>
+                        <!--MOSTRAR NOMBRE DEL DEPARTAMENTO-->
+                        <option value="" selected="selected" hidden>Departamento</option>
+                        <option ng-selected="{{department.id==municipality.department_id}}" value="{{department.id}}"
+                                ng-repeat="department in departments">{{department.name}}
+                        </option>
+                    </select>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="population" ng-model="municipality.habitants" placeholder="Poblacion">
-                    </div>
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control validate[required]" id="language"
+                           ng-model="municipality.idioms" placeholder="Lenguaje">
                 </div>
-                <div class="form-group">
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="superficie" ng-model="municipality.superficie" placeholder="Superficie">
-                    </div>
-                </div>
+            </div>
 
-                <div class="form-group">
-                    <div>
-                        <input type="text" class="form-control validate[required]" id="web" ng-model="municipality.website" placeholder="Sitio Web">
-                    </div>
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control validate[required]" id="population"
+                           ng-model="municipality.habitants" placeholder="Poblacion">
                 </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control validate[required]" id="superficie"
+                           ng-model="municipality.superficie" placeholder="Superficie">
+                </div>
+            </div>
 
-                <div class="form-group" >
-                    <div>
-                        <select class="form-control notBorder" ng-model="municipality.tipologyId">
-                            <option value="" disabled selected hidden>Tipología</option>
-                            <option  value="{{tipology.id}}" ng-repeat="tipology in tipologies">{{tipology.name}}</option>
-                        </select>
-                    </div>
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control validate[required]" id="web" ng-model="municipality.website"
+                           placeholder="Sitio Web">
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div>
-                        <input type="submit" class="btn btn-md btn-primary center-block" value="ACEPTAR">
-                    </div>
+            <div class="form-group">
+                <div>
+
+                    <select class="form-control notBorder" ng-model="municipality.department_id">
+                        <option value="" selected="selected" hidden>Tipología</option>
+                        <option value="{{tipology.id}}" ng-repeat="tipology in tipologies">{{tipology.name}}</option>
+                    </select>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <input type="submit" class="btn btn-md btn-primary center-block" value="ACEPTAR">
+                </div>
+            </div>
         </form>
     </div>
-<div class="col-md-3"></div>
+    <div class="col-md-3"></div>
 </div>
 
 <script>
