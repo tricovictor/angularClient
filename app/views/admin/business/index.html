@@ -1,0 +1,38 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<h2 style="text-align: center">LISTADO EMPRESAS</h2>
+
+<div class="container">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+
+    <ul class="list-group">
+        <li class="list-group-item col-md-12" ng-repeat="busines in business">
+
+            <div class="col-md-2" style="margin: 0px; padding: 0px; text-align: right;">
+                <b>Nombre:</b></br>
+                <b>Direccion:</b></br>
+                <b>Descripcion:</b></br>
+                <b>Teléfono:</b></br>
+
+            </div>
+            <div class="col-md-5" style="text-align: left;">
+                <b>{{busines.name}}</b></br>
+                {{busines.address}}</br>
+                {{busines.description}}</br>
+                {{busines.phone}}</br>
+
+            </div>
+            <div class="col-md-5" style="text-align: right;">
+                </br>
+                <a class="btn-lg btn-success" ng-click="editBusiness(busines.id)" title="Editar"
+                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <a class="btn-lg btn-success" ng-click="businessSubAmbito(busines.id)" title="Tipologia"
+                       role="button"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="col-md-3"></div>
+</div>

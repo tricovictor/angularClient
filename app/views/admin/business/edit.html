@@ -1,0 +1,56 @@
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#formID").validationEngine('attach');
+    });
+</script>
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+
+<div class="container">
+
+    <h2 style="text-align: center">MODIFICAR EMPRESAS</h2>
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <form class="form-horizontal" role="form" ng-submit="updateBusiness()" id="formID">
+
+            <div class="form-group">
+
+                <div class="form-group">
+                    <div>
+                        <input type="text" class="form-control validate[required]" id="nombre" ng-model="busines.name" placeholder="Nombre de la Empresa">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control validate[required]" id="apellido" ng-model="busines.description" placeholder="Descripcion">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div>
+                        <input type="text" class="form-control validate[required]" id="address" ng-model="busines.address" placeholder="Direccion">
+                    </div>
+
+                    <div>
+                        <input type="text" class="form-control validate[required]" id="phone" ng-model="busines.phone" placeholder="Telefono">
+                    </div>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <div>
+                        <input type="submit" class="btn btn-md btn-primary center-block" value="Actualizar">
+                    </div>
+                </div>
+
+               
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<script>
+    function reset() {
+        document.getElementById("formID").reset();
+    }
+</script>

@@ -278,6 +278,38 @@ var app = angular
         }
       })
 
+      .when('/business/index', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'business/index.html',
+        controller: 'BusinessCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/business/create', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'business/create.html',
+        controller: 'BusinessCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/business/businessSubAmbitos', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'business/businessSubAmbitos.html',
+        controller: 'BusinessCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
+      .when('/business/edit', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'business/edit.html',
+        controller: 'BusinessCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/interviewerHome', {
         templateUrl: CONFIG.TEMPLATE_DIR +ROLES.INTERVIEWER.PATH + 'home.html',
         controller: 'SurveyCtrl',
