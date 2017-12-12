@@ -1,25 +1,18 @@
 <div ng-include src="'views/admin/navBarAdmin.html'"></div>
 
-<h2 style="text-align: center">LISTADO DE SUBAMBITOS</h2>
+<h2 style="text-align: center">LISTADO DE SUB-AMBITOS</h2>
 
 <div class="container">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
 
-    <ul class="list-group">
-        <li class="list-group-item col-md-12" ng-repeat="subambito in subAmbitos">
+        <ul class="list-group">
+            <li class="list-group-item col-md-12" ng-repeat="subambito in subAmbitos">
 
-            <div class="col-md-1" style="margin: 0px; padding: 0px; text-align: right;">
-                <b>Ambito:</b>
-            </div>
-            <div class="col-md-9">
-                {{subambito.name}}
-            </div>
-            <div class="col-md-2" style="text-align: right;">
+                {{subambito.name}}</br>
 
-                <a class="btn-lg btn-success" ng-click="editSubAmbito(subambito.id)" title="Editar"
-                   role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-2"></div>
 </div>
-

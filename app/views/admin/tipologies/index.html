@@ -3,23 +3,18 @@
 <h2 style="text-align: center">LISTADO DE TIPOLOGIAS</h2>
 
 <div class="container">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
 
         <ul class="list-group">
             <li class="list-group-item col-md-12" ng-repeat="tipology in tipologies">
 
-                <div class="col-md-9" style="margin: 0px; padding: 0px; text-align: left;">
-                    </br>{{tipology.name}}</br>
-                </div>
-                <div class="col-md-3" style="text-align: right;">
-                    </br>
-                    <a class="btn-lg btn-success" ng-click="editTipology(tipology.id)" title="Editar"
-                       role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                    </br></br>
-                </div>
+                {{tipology.name}}</br>
+
             </li>
         </ul>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-2"></div>
 </div>
+
+

@@ -48,7 +48,8 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
     };
 
     $scope.cargarGrafico = function(opcion){
-        setTimeout(function(){},1000); 
+        setTimeout(function () {
+        }, 1000);
 
         if(opcion == 'uno'){
             localStorage.setItem('graphic','uno');
@@ -83,8 +84,8 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                     var ctx = document.createElement("canvas");
                     ctx.setAttribute('id',numero);
                     capa.appendChild(ctx);
-    
-                    for(var j=0; j<datos.length; j++) 
+
+                    for (var j = 0; j < datos.length; j++)
                     {
                         var lab = document.createElement("label");
                         lab.setAttribute('id','lab'+datosarray);
@@ -126,7 +127,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                         }
                     });
                 }
-            }        
+            }
         }).catch(function(error){
 
         });
@@ -152,13 +153,14 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                     ctx.setAttribute('id',numero);
                     ctx.setAttribute('width','80%');
                     capa.appendChild(ctx);
-                    for(var j=0; j<datos.length; j++) 
+                    for (var j = 0; j < datos.length; j++)
                     {
                         var lab = document.createElement("label");
                         lab.setAttribute('id','lab'+datosarray);
                         lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
                         capa.appendChild(lab);
-                        document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                        document.getElementById('lab' + datosarray).innerHTML = labeles[j] + ': ' + datos[j]
+                            + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                         datosarray++;
                     }
 
@@ -175,12 +177,11 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                     },
                         options: {
                             scales: {
+                                xAxes: [{
+                                    display: false
+                                }],
                                 yAxes: [{
-                                    ticks: {
-                                        min: 0,
-                                        max: 100,
-                                        stepSize: 10
-                                    }
+                                    display: true
                                 }]
                             },
                             title: {
@@ -195,7 +196,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                         }
                     });
                 }
-            }        
+            }
         }).catch(function(error){
 
         });
@@ -218,13 +219,14 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                         ctx.setAttribute('id',numero);
                         capa.appendChild(ctx);
 
-                        for(var j=0; j<datos.length; j++) 
+                        for (var j = 0; j < datos.length; j++)
                         {
                             var lab = document.createElement("label");
                             lab.setAttribute('id','lab'+datosarray);
                             lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
                             capa.appendChild(lab);
-                            document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                            document.getElementById('lab' + datosarray).innerHTML = labeles[j] + ': ' + datos[j]
+                                + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                             datosarray++;
                         }
 
@@ -252,7 +254,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                                 title: {
                                     display: true,
                                     fontSize: 20,
-                                    fontColor: 'rgba(127,191,63,1)',                               
+                                    fontColor: 'rgba(127,191,63,1)',
                                     text: todos[i].name
                                 },
                                 legend: {
@@ -286,13 +288,14 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                             ctx.setAttribute('id',numero);
                             capa.appendChild(ctx);
 
-                            for(var j=0; j<datos.length; j++) 
+                            for (var j = 0; j < datos.length; j++)
                             {
                                 var lab = document.createElement("label");
                                 lab.setAttribute('id','lab'+datosarray);
                                 lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
                                 capa.appendChild(lab);
-                                document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                                document.getElementById('lab' + datosarray).innerHTML = labeles[j] + ': ' + datos[j]
+                                    + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                                 datosarray++;
                             }
 
@@ -319,12 +322,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                                             stepSize: 20
                                         }
                                     },
-                                    title: {
-                                        display: true,
-                                        fontSize: 20,
-                                        fontColor: 'rgba(127,191,63,1)',
-                                        text: todos[i].name
-                                    },
+
                                     legend: {
                                         display: false
                                     }
@@ -342,14 +340,14 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
         });
     }
 
+
 }]);
 
 
-
-app.factory('graphicFactory', ['$http', 'routeini', function($http, routeini) 
+app.factory('graphicFactory', ['$http', 'routeini', function ($http, routeini)
 {
     var urlService = routeini;
-    
+
     var obj = {};
 
     obj.getAmbitos = function()
@@ -377,8 +375,7 @@ app.factory('graphicFactory', ['$http', 'routeini', function($http, routeini)
         return $http.get(urlService + 'groups/getGraphicsAmbitos?id=' + id);
     };
 
-    obj.getMunicipalities = function()
-    {   
+    obj.getMunicipalities = function() {
         return $http.get(urlService + 'municipalities/all');
     };
 

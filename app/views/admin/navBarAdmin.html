@@ -16,9 +16,6 @@
 
                <ul class="nav navbar-nav">
 
-                <!--   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
-                       <span class="caret"></span></a>-->
-
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">REPORTES<span class="caret"></span></a>
@@ -27,24 +24,12 @@
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" ng-controller="GraphicCtrl">
                         <li class="dropdown">
 
-                            <a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Informe y Gráfico de Barras</a>
-                            <a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Informe y Gráfico Radar</a>
-                            <a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Informe y Gráfico Por Grupos</a><a ng-click="cargarGrafico('cuatro')" ng-href="#!reports/graphicsambitos">Informe y Gráfico Por Ambito</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">INFORMACIÓN<span class="caret"></span></a>
-
-                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-
-                        <li class="dropdown">
-                            <a ng-href="#!survey/close">Cerrar Encuestas</a>
-                            <a ng-href="#!tipology/solutionTi">Soluciones IT</a>
+                            <a ng-click="cargarGrafico('uno')" ng-href="#!reports/graphics">Gráfico de Barras</a>
+                            <a ng-click="cargarGrafico('dos')" ng-href="#!reports/graphicsradar">Gráfico Radar</a>
+                            <a ng-click="cargarGrafico('tres')" ng-href="#!reports/graphicsgroup">Gráfico Por Grupos</a><a
+                                ng-click="cargarGrafico('cuatro')" ng-href="#!reports/graphicsambitos">Gráfico Por
+                            Ambito</a>
+                            <a ng-href="#!tipology/solutionTi">Informe Soluciones IT</a>
                         </li>
                     </ul>
                 </li>
@@ -80,6 +65,14 @@
                             </ul>
                         </li>
 
+                        <li class="dropdown">
+                            <a ng-href="#!survey/close">Cerrar Encuestas</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a ng-href="">Puntaje mínimo</a>
+                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -87,41 +80,50 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">CONFIGURACIÓN<span class="caret"></span></a>
+                       aria-expanded="false">LISTAR<span class="caret"></span></a>
 
                     <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 
                         <li class="dropdown">
-                            <a ng-href="#!ambitos/index" tabindex="-1">Listar Ambitos</a>
+                            <a ng-href="#!ambitos/index" tabindex="-1">Ámbitos</a>
                         </li>
 
                         <li class="dropdown">
-                            <a ng-href="#!subambitos/index" tabindex="-1">Listar Sub-Ambitos</a>
+                            <a ng-href="#!subambitos/index" tabindex="-1">Sub-Ámbitos</a>
                         </li>
 
                         <li class="dropdown">
-                            <a ng-href="#!degree/index" tabindex="-1">Listar Grados</a>
+                            <a ng-href="#!degree/index" tabindex="-1">Grados</a>
                         </li>
 
                         <li class="dropdown">
-                            <a ng-href="#!level/index" tabindex="-1">Listar Niveles</a>
+                            <a ng-href="#!level/index" tabindex="-1">Niveles</a>
                         </li>
 
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1">Tipologias</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#!tipology/create">Modificar</a></li>
-                                <li><a ng-href="#!tipology/index">Listar</a></li>
-                            </ul>
+                        <li class="dropdown">
+                            <a ng-href="#!tipology/index" tabindex="-1">Tipologías</a>
                         </li>
 
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1">Departamentos</a>
-                            <ul class="dropdown-menu">
-                                <li><a ng-href="#!department/create">Añadir</a></li>
-                                <li><a ng-href="#!department/index">Listar</a></li>
-                            </ul>
+                        <li class="dropdown">
+                            <a ng-href="#!department/index" tabindex="-1">Departamentos</a>
                         </li>
+
+
+                        <!-- <li class="dropdown-submenu">
+                             <a tabindex="-1">Tipologias</a>
+                             <ul class="dropdown-menu">
+                                 <li><a ng-href="#!tipology/create">Modificar</a></li>
+                                 <li><a ng-href="#!tipology/index">Listar</a></li>
+                             </ul>
+                         </li>
+
+                         <li class="dropdown-submenu">
+                             <a tabindex="-1">Departamentos</a>
+                             <ul class="dropdown-menu">
+                                 <li><a ng-href="#!department/create">Añadir</a></li>
+                                 <li><a ng-href="#!department/index">Listar</a></li>
+                             </ul>
+                         </li>-->
                     </ul>
                 </li>
             </ul>
