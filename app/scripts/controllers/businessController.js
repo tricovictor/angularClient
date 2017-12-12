@@ -87,14 +87,20 @@ app.controller('BusinessCtrl', ['$scope', 'businessFactory', 'routeini', functio
             id: $scope.busines.id,
             subambitos: sub_ambitos.toString()
         };
-        console.log(parameter);
+
+        businessFactory.getBusinessSubAmbito($scope.busines.id, sub_ambitos).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+
+        });
+        /*        console.log(parameter);
         parameter = JSON.stringify(parameter);
 
         var settings = {
             "async": true,
             "crossDomain": true,
             "url": routeini + "business/updateSubAmbitos",
-            "method": "PUT",
+         "method": "GET",
             "headers": {
                 "content-type": "application/json",
                 "cache-control": "no-cache"
@@ -106,7 +112,7 @@ app.controller('BusinessCtrl', ['$scope', 'businessFactory', 'routeini', functio
         $.ajax(settings).done(function (response) {
             alert(response);
         });
-        window.location.replace("#!adminHome");
+         window.location.replace("#!adminHome");*/
     };
 
     $scope.generatePDF = function () {
@@ -139,6 +145,10 @@ app.factory('businessFactory', ['$http', 'routeini', function ($http, routeini) 
     obj.getSubAmbitos = function () {
         return $http.get(urlService + 'subambitos/all');
     };
+
+    obj.getBusinessSubAmbito = function (id, subambitos) {
+        return $http.get(urlService + 'business/updateSubAmbitos?id=' + id + '&subambitos=' + subambitos);
+    }
 
     return obj;
 

@@ -66,19 +66,3 @@
 
 
 </div>
-
-<script type="text/javascript">
-    var elem = document.getElementById("drop");
-    elem.onchange = function () {
-
-        document.getElementById("preload").style.display = (this.value == "") ? "none" : "block";
-
-        $("#menu").delay(0).fadeOut(50, function () {
-            $(this).hide();
-            $("#preload").delay(0).fadeOut(50, function () {
-                $(this).hide();
-            });
-        });
-        $("#content").delay(0).fadeIn(500);
-    };
-</script>

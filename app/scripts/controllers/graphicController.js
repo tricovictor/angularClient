@@ -146,8 +146,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
 
                 if(datos.length !=0)
                 {
-                    console.log(datos);
-                    console.log(labeles);
 
                     var capabar = document.getElementById("capa");
                     var ctx = document.createElement("canvas");
@@ -213,7 +211,6 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                     numero++;
                     var datos = JSON.parse(todos[i].data);
                     var labeles = JSON.parse(todos[i].labels);
-                    console.log(datos);
                     if(datos.length !=0)
                     {
                         var capa = document.getElementById("capa");

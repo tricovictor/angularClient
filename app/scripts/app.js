@@ -247,7 +247,7 @@ var app = angular
       })
 
       .when('/tipology/solutionTi', {
-        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/solutionIT.html',
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/solutionTi.html',
         controller: 'TipologyCtrl',
         data: {
           authorized: [ROLES.ADMIN.ROL]
