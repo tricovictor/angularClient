@@ -70,7 +70,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a ng-href="">Puntaje mínimo</a>
+                            <a ng-href="#!tipology/puntaje">Puntaje mínimo</a>
                         </li>
 
                     </ul>
@@ -130,8 +130,8 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Usuario<span class="caret"></span></a>
+                    <a id="user" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a ng-href="">Mi Perfil</a></li>
                         <li><a ng-controller="LoginCtrl" ng-href="" ng-click="logout()">Cerrar Sesión</a></li>
@@ -142,4 +142,8 @@
         </div>
     </div>
 </nav>
+<script>
+    var nameuser = localStorage.getItem('nameuser');
+    document.getElementById('user').innerHTML = nameuser;
+</script>
 

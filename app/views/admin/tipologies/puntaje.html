@@ -1,0 +1,37 @@
+<div ng-include src="'views/admin/navBarAdmin.html'"></div>
+<script>
+    jQuery(document).ready(function(){
+        jQuery("#formID").validationEngine('attach');
+    });
+</script>
+
+
+<div class="container">
+
+    <h2 style="text-align: center">PORCENTAJE DE CUBRIMIENTO ACEPTABLE</h2>
+
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form class="form-horizontal" role="form" ng-submit="tipologiaAceptable()" id="formID">
+
+                <div class="form-group">
+                    <div>
+                        <input type="text" class="form-control validate[required,min[1],max[100]]" id="puntaje" ng-model="puntaje" placeholder="Puntaje aceptable mas de....">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <input type="submit" class="btn btn-md btn-primary center-block" value="ACEPTAR">
+                    </div>
+                </div>
+        </form>
+    </div>
+<div class="col-md-3"></div>
+</div>
+
+<script>
+    function reset() {
+        document.getElementById("formID").reset();
+    }
+</script>

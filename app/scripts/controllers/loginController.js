@@ -29,10 +29,12 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory','rou
                 {
                     localStorage.setItem("token", 'admin');
                     localStorage.setItem("tokenrgc", response.id);
+                    localStorage.setItem("nameuser", response.name);
                     window.location.replace("#!adminHome");
                 } else {
                     localStorage.setItem("token", 'interviewer');
                     localStorage.setItem("tokenrgc", response.id);
+                    localStorage.setItem("nameuser", response.name);
                     window.location.replace("#!interviewerHome");
                 }
             }
@@ -42,6 +44,7 @@ app.controller('LoginCtrl', ['$scope', '$location', '$http', 'loginFactory','rou
     $scope.logout = function()
     {
         localStorage.removeItem("token");
+        localStorage.clear();
         window.location.replace("#!login");
     };
 

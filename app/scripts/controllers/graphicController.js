@@ -232,25 +232,35 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
 
                         var crx = document.getElementById(numero).getContext('2d');
                         var myChart = new Chart(crx, {
-                            type: 'radar',
+                            type: 'bar',
                             data: {
                             labels: labeles,
                             datasets: [{
                                 data: datos,
-                                borderWidth: 6,
-                                borderColor: 'rgba(77,166,253,0.85)',
-                                backgroundColor: 'rgba(208, 196, 253, 0.69)'
+                                backgroundColor: ["rgba(127,191,63,1)", "rgba(232,119,175,1)", "rgba(232,232,119,1)", "rgba(123,119,232,0.7)"]
                             }]
                         },
                             options: {
-                                scale: {
-                                    ticks: {
-                                        beginAtZero: true,
-                                        min: 0,
-                                        max: 100,
-                                        stepSize: 20
-                                    }
-                                },
+                                scales: {
+                                    xAxes: [{
+                                        display: false
+                                    }],
+                                    yAxes: [{
+                                          gridLines: {
+                                            zeroLineColor: "black",
+                                            zeroLineWidth: 2
+                                          },
+                                          ticks: {
+                                            min: 0,
+                                            max: 100,
+                                            stepSize: 10
+                                          },
+                                          scaleLabel: {
+                                            display: true,
+                                            labelString: "Cubrimiento"
+                                          }
+                                        }]                                 
+                                    },
                                 title: {
                                     display: true,
                                     fontSize: 20,

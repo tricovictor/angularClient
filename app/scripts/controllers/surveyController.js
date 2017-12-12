@@ -9,7 +9,13 @@ app.controller('SurveyCtrl', ['$scope', 'surveyFactory', 'routeini', function ($
       surveyFactory.getSurvey(id).then(function(survey)
       {
         $scope.survey = survey.data;
-        localStorage.setItem('surveyId',$scope.survey.id);
+        if(survey.data) {
+          $(detalles).show();
+          localStorage.setItem('surveyId',$scope.survey.id);
+        } else {
+          $(detalles).hide();
+          alert("No tiene encuesta abierta");
+        }
       }).catch(function(error){
         console.log(error);
       });

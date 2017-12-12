@@ -93,28 +93,9 @@ app.controller('BusinessCtrl', ['$scope', 'businessFactory', 'routeini', functio
         }).catch(function (error) {
 
         });
-        /*        console.log(parameter);
-        parameter = JSON.stringify(parameter);
-
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": routeini + "business/updateSubAmbitos",
-         "method": "GET",
-            "headers": {
-                "content-type": "application/json",
-                "cache-control": "no-cache"
-            },
-            "processData": false,
-            "data": parameter
-        }
-
-        $.ajax(settings).done(function (response) {
-            alert(response);
-        });
-         window.location.replace("#!adminHome");*/
     };
 
+    
     $scope.generatePDF = function () {
         kendo.drawing.drawDOM($("#capa")).then(function (group) {
             kendo.drawing.pdf.saveAs(group, "Converted PDF.pdf");

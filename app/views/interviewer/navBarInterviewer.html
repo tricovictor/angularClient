@@ -15,10 +15,14 @@
      
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pepito perez<span class="caret"></span></a>
+          <a id="user" href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><a ng-controller="LoginCtrl" href="" ng-click="logout()">Salir</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<script>
+    var nameuser = localStorage.getItem('nameuser');
+    document.getElementById('user').innerHTML = nameuser;
+</script>

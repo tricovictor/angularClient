@@ -16,6 +16,14 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory','routeini', function
 		console.log(error);
 	});
 
+    tipologyFactory.getPuntaje().then(function(puntaje)
+    {
+        $scope.puntaje = puntaje.data;
+        console.log(puntaje);
+    }).catch(function(error){
+        console.log(error);
+    });
+
     function getTipology()
     {
         tipologyFactory.getTipology($scope.tipologyId).then(function(tipology)
@@ -161,6 +169,18 @@ app.controller('TipologyCtrl', ['$scope', 'tipologyFactory','routeini', function
         window.location.replace("#!adminHome");
     };
 
+    $scope.tipologiaAceptable = function()
+    {
+        if($scope.puntaje > 0 && $scope.puntaje <=100) {
+            tipologyFactory.setPuntaje($scope.puntaje).then(function(response){
+                alert(response.data.response);
+                window.location.replace("#!adminHome");
+            }).catch(function(error){
+
+            });
+        }
+    };
+
     $scope.generatePDF = function() {kendo.drawing.drawDOM($("#capa")).then(function(group) {
         kendo.drawing.pdf.saveAs(group, "Converted PDF.pdf");
         });
@@ -204,6 +224,16 @@ app.factory('tipologyFactory', ['$http','routeini', function($http, routeini)
     obj.getSubAmbitos = function()
     {
         return $http.get(urlService + 'subambitos/all');
+    };
+
+    obj.getPuntaje = function()
+    {
+        return $http.get(urlService + 'tipologies/getPuntaje');
+    };
+
+    obj.setPuntaje = function(id)
+    {
+        return $http.get(urlService + 'tipologies/setPuntaje?id=' + id);
     };
 
     return obj;

@@ -246,6 +246,14 @@ var app = angular
         }
       })
 
+      .when('/tipology/puntaje', {
+        templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/puntaje.html',
+        controller: 'TipologyCtrl',
+        data: {
+          authorized: [ROLES.ADMIN.ROL]
+        }
+      })
+
       .when('/tipology/solutionTi', {
         templateUrl: CONFIG.TEMPLATE_DIR + ROLES.ADMIN.PATH + 'tipologies/solutionTi.html',
         controller: 'TipologyCtrl',
