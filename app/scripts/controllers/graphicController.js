@@ -65,6 +65,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
         }
     };
 
+    /*    INICIO GRAFICO DE RADAR*/
     function getGraphicsRadar(survey){
         graphicFactory.getGraphics(survey).then(function(response){
             todos=response.data;
@@ -91,8 +92,18 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                         lab.setAttribute('id','lab'+datosarray);
                         lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
                         capa.appendChild(lab);
+                        /*
                         document.getElementById('lab'+datosarray).innerHTML = labeles[j]+': '+datos[j];
+                         */
+                        document.getElementById('lab' + datosarray).innerHTML =
+                            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                            '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                         datosarray++;
+
+
                     }
                     var crx = document.getElementById(numero).getContext('2d');
                     var myChart = new Chart(crx, {
@@ -133,6 +144,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
         });
     };
 
+    /*    INICIO GRAFICO DE BARRAS*/
     function getGraphicsBar(survey){
         graphicFactory.getGraphics(survey).then(function(response){
             todos=response.data;
@@ -153,7 +165,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                     ctx.setAttribute('id',numero);
                     ctx.setAttribute('width','80%');
                     capa.appendChild(ctx);
-                    for (var j = 0; j < datos.length; j++)
+                    /*   for (var j = 0; j < datos.length; j++)
                     {
                         var lab = document.createElement("label");
                         lab.setAttribute('id','lab'+datosarray);
@@ -162,7 +174,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                         document.getElementById('lab' + datosarray).innerHTML = labeles[j] + ': ' + datos[j]
                             + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                         datosarray++;
-                    }
+                     }*/
 
 
                     var crx = document.getElementById(numero).getContext('2d');
@@ -202,6 +214,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
         });
     };
 
+    /*    INICIO GRAFICO DE GRUPOS*/
     function getGraphicsGroups(survey){
         graphicFactory.getGraphicsGroups(survey).then(function (response) {
                 todos=response.data;
@@ -219,7 +232,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                         ctx.setAttribute('id',numero);
                         capa.appendChild(ctx);
 
-                        for (var j = 0; j < datos.length; j++)
+                        /*      for (var j = 0; j < datos.length; j++)
                         {
                             var lab = document.createElement("label");
                             lab.setAttribute('id','lab'+datosarray);
@@ -229,7 +242,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                                 + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                             datosarray++;
                         }
-
+                         */
                         var crx = document.getElementById(numero).getContext('2d');
                         var myChart = new Chart(crx, {
                             type: 'bar',
@@ -280,7 +293,7 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
 
     };
 
-
+    /*    INICIO GRAFICO POR AMBITO*/
     function getGraphicsXAmbito(survey){
         graphicFactory.getGraphicsAmbitos(survey).then(function (response) {
                     todos=response.data;
@@ -304,8 +317,14 @@ app.controller('GraphicCtrl', ['$scope', 'graphicFactory', 'routeini', function 
                                 lab.setAttribute('id','lab'+datosarray);
                                 lab.setAttribute('style', 'font-weight: normal; color: #B4886B;');
                                 capa.appendChild(lab);
-                                document.getElementById('lab' + datosarray).innerHTML = labeles[j] + ': ' + datos[j]
-                                    + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                                /*document.getElementById('lab' + datosarray).innerHTML = labeles[j] + ': ' + datos[j]
+                                 + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';*/
+                                document.getElementById('lab' + datosarray).innerHTML =
+                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                                 datosarray++;
                             }
 
